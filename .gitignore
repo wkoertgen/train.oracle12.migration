@@ -1,2 +1,3 @@
 .vagrant/
-files/
+database_installer/
+!database_installer/placeholder.txt
