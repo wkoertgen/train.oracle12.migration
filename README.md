@@ -8,3 +8,7 @@ An experiment trying to get oracle 12c up and running in 5 minutes using vagrant
 - [rhopman/docker-oracle-12c (GitHub)](https://github.com/rhopman/docker-oracle-12c)
 - [wscherphof/oracle-12c (GitHub)](https://github.com/wscherphof/oracle-12c)
 - [phusion/open-vagrant-boxes (GitHub)](https://github.com/phusion/open-vagrant-boxes)
+
+## Notes
+
+- For now we are using oracle linux 7.1. Be sure to have the vbguest additions matching.
