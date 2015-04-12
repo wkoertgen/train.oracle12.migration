@@ -12,3 +12,4 @@ An experiment trying to get oracle 12c up and running in 5 minutes using vagrant
 ## Notes
 
 - For now we are using oracle linux 7.1. Be sure to have the vbguest additions matching.
+- Another change
