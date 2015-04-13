@@ -5,9 +5,6 @@ Vagrant.configure(2) do |config|
   # use oraclelinux 7.1 from vagrant cloud
   config.vm.box = "boxcutter/oel71"
 
-  # auto-update guest additions so we can ssh into the box
-  config.vbguest.auto_update = true
-
   # change memory size
   config.vm.provider "virtualbox" do |v|
     v.memory = 2048
