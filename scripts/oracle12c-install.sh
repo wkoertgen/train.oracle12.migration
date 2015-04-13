@@ -12,12 +12,13 @@ sudo cp /vagrant/env/etc/hosts /etc/hosts
 sudo cp /vagrant/env/etc/sysconfig/network /etc/sysconfig/network
 sudo /etc/init.d/network restart
 
-sudo hostname -v oracle12c.localdomain
+sudo hostname -b oracle12c.localdomain
 
 cd /vagrant/database_installer
 
-unzip linuxamd64_12c_database_1of2.zip
-unzip linuxamd64_12c_database_2of2.zip
+sudo yum -y install unzip
+unzip linuxamd64_12102_database_1of2.zip
+unzip linuxamd64_12102_database_2of2.zip
 
 cd /home/oracle
 
