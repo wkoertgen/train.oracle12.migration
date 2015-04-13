@@ -30,9 +30,20 @@ you should be able to connect to the database.
 
 ## Links
 
-We heavily bought from
+We considered gratefully following links
 - [dbehnke/oracle12c-vagrant (GitHub)](https://github.com/dbehnke/oracle12c-vagrant)
 - [Starting From Windows with Linux VM as Docker Host (AMIS Technology Blog)](https://technology.amis.nl/2015/03/15/docker-take-two-starting-from-windows-with-linux-vm-as-docker-host/)
 - [rhopman/docker-oracle-12c (GitHub)](https://github.com/rhopman/docker-oracle-12c)
 - [wscherphof/oracle-12c (GitHub)](https://github.com/wscherphof/oracle-12c)
 - [phusion/open-vagrant-boxes (GitHub)](https://github.com/phusion/open-vagrant-boxes)
+
+## Changes
+April 13th: Oracle12c (Release 12.1.0.2) installed, snapshot AfterOra12Install created
+
+	we preferred to implement our own scripts: 
+	01_setup.sh, 02_checkPreq.sh, 03_install.sh, 04_postinstall.log, 05_postinstall.sh
+	TODO_1: change resource, kernel parameters, shared memory config, etc. to run several databases
+	TODO_2: create first CDB as of Oracle12
+	TODO_3: install Oracle11g (Release 11.2.0.4) 
+	TODO_4: create first Non-CDB database
+
