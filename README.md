@@ -1,6 +1,8 @@
 # hello.docker.oracle12c
 
 An experiment trying to get oracle 12c up and running in 5 minutes using vagrant, docker et al.
+We want to evaluate the lowest possible entry barrier for getting started with Oracle 12C, e.g. for easy 
+and scalable setup of training sessions, webinars, etc. 
 
 ## Prerequisites
 
@@ -22,28 +24,26 @@ After running
 
     vagrant up
 
-you should be able to connect to the database.
-- Default password for `sys`, `system` is `vagrant`
-- Port 1521
-- service `cdb12c` (for container), `pdb` (for pluggable database)
+you should be able to connect to the database using *TODO: Port forwarding?*
+
+- Default password for `sys` and `system` is `vagrant`
+- Service `cdb12c` for container
+- Service `pdb` for pluggable database
 
 
 ## Links
 
-We considered gratefully following links
+We considered gratefully the following links
+
 - [dbehnke/oracle12c-vagrant (GitHub)](https://github.com/dbehnke/oracle12c-vagrant)
 - [Starting From Windows with Linux VM as Docker Host (AMIS Technology Blog)](https://technology.amis.nl/2015/03/15/docker-take-two-starting-from-windows-with-linux-vm-as-docker-host/)
 - [rhopman/docker-oracle-12c (GitHub)](https://github.com/rhopman/docker-oracle-12c)
 - [wscherphof/oracle-12c (GitHub)](https://github.com/wscherphof/oracle-12c)
 - [phusion/open-vagrant-boxes (GitHub)](https://github.com/phusion/open-vagrant-boxes)
 
-## Changes
-April 13th: Oracle12c (Release 12.1.0.2) installed, snapshot AfterOra12Install created
+## TODO
 
-	we preferred to implement our own scripts: 
-	01_setup.sh, 02_checkPreq.sh, 03_install.sh, 04_postinstall.log, 05_postinstall.sh
-	TODO_1: change resource, kernel parameters, shared memory config, etc. to run several databases
-	TODO_2: create first CDB as of Oracle12
-	TODO_3: install Oracle11g (Release 11.2.0.4) 
-	TODO_4: create first Non-CDB database
-
+	1. change resource, kernel parameters, shared memory config, etc. to run several databases
+	2. create first CDB as of Oracle12
+	3. install Oracle11g (Release 11.2.0.4)
+	4. create first Non-CDB database
