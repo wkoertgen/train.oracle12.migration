@@ -16,7 +16,14 @@ You should have installed
 - Download [Database Install files (1 and 2)](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-1959253.html)
     - `linuxamd64_12102_database_1of2.zip` (1.5G)
     - `linuxamd64_12102_database_2of2.zip` (967.5M)
-- Place the zip archives in `database_installer/`
+- Place the zip archives in `12c_installer/`
+
+### Oracle 11gR2
+
+- Download [Database Install files (1 and 2)](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html)
+    - `p10404530_112030_Linux-x86-64_1of7.zip`
+    - `p10404530_112030_Linux-x86-64_2of7.zip`
+- Place the zip archives in `11g_installer/`
 
 ## Connect to Database
 
@@ -40,10 +47,3 @@ We considered gratefully the following links
 - [rhopman/docker-oracle-12c (GitHub)](https://github.com/rhopman/docker-oracle-12c)
 - [wscherphof/oracle-12c (GitHub)](https://github.com/wscherphof/oracle-12c)
 - [phusion/open-vagrant-boxes (GitHub)](https://github.com/phusion/open-vagrant-boxes)
-
-## TODO
-
-	1. change resource, kernel parameters, shared memory config, etc. to run several databases
-	2. create first CDB as of Oracle12
-	3. install Oracle11g (Release 11.2.0.4)
-	4. create first Non-CDB database

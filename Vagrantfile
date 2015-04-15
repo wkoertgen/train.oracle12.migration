@@ -8,19 +8,20 @@ Vagrant.configure(2) do |config|
   # auto-update guest additions so we can ssh into the box
   #config.vbguest.auto_update = true
 
-  # change memory size
-  config.vm.provider "virtualbox" do |v|
-    v.memory = 2048
-  end
+  # additonal folders
+  config.vm.synced_folder "./monitor", "/monitor",
+  owner: "oracle", group: "oinstall"
 
+  # change memory size, cpu#
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 4096
+    v.cpus = 2
+  end
+  
   # Oracle port forwarding
-  #config.vm.network "forwarded_port", guest: 11521, host: 21521
+  config.vm.network "forwarded_port", guest: 11521, host: 21521
 
   # run setup.sh
   config.vm.provision "shell", path: "scripts/oracle12c-install.sh"
-
-  # proxy
-  #config.proxy.http     = "http://proxy:port"
-  #config.proxy.https    = "http://proxy.port"
-  #config.proxy.no_proxy = "localhost,127.0.0.1"
+  #config.vm.provision "shell", path: "scripts/oracle11g-install.sh"
 end
