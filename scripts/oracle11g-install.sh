@@ -16,8 +16,8 @@ export ORACLE_SID=UPGR
 
 cd /vagrant/11g_installer
 
-unzip p10404530_112030_Linux-x86-64_1of7.zip > $LOGFILE
-unzip p10404530_112030_Linux-x86-64_2of7.zip >> $LOGFILE
+unzip linux.zseries64_11gR2_database_1of2.zip > $LOGFILE
+unzip linux.zseries64_11gR2_database_2of2.zip >> $LOGFILE
 
 #run oracle installer
 cd /vagrant/11g_installer/database

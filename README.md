@@ -20,9 +20,9 @@ You should have installed
 
 ### Oracle 11gR2
 
-- Download [Database Install files (1 and 2)](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/112010-linx8664soft-100572.html)
-    - `linux.x64_11gR2_database_1of2.zip`
-    - `linux.x64_11gR2_database_2of2.zip`
+- Download [Database Install files (1 and 2)](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/112020-zlinux64-352074.html)
+    - `linux.zseries64_11gR2_database_1of2.zip`
+    - `linux.zseries64_11gR2_database_2of2.zip`
 - Place the zip archives in `11g_installer/`
 
 ## Connect to Database
