@@ -1,0 +1,65 @@
+##############################################################################
+# Copyright (c) 1991, 2001, 2002 by Oracle Corporation
+##############################################################################
+ 
+###########################################
+# Cache and I/O
+###########################################
+db_block_size=8192
+ 
+###########################################
+# Cursors and Library Cache
+###########################################
+open_cursors=300
+ 
+###########################################
+# Database Identification
+###########################################
+db_domain=localhost.localdomain
+db_name="UPGR"
+ 
+###########################################
+# File Configuration
+###########################################
+control_files=("/u01/app/oracle/oradata/UPGR/control01.ctl", "/u01/app/oracle/oradata/UPGR/control02.ctl")
+ 
+###########################################
+# Miscellaneous
+###########################################
+compatible=11.2.0.0.0
+diagnostic_dest=/u01/app/oracle
+ 
+###########################################
+# Processes and Sessions
+###########################################
+processes=300
+sessions=335
+ 
+###########################################
+# SGA Memory
+###########################################
+sga_target=943718400
+ 
+###########################################
+# Security and Auditing
+###########################################
+audit_file_dest="/u01/app/oracle/admin/UPGR/adump"
+audit_trail=db
+remote_login_passwordfile=EXCLUSIVE
+ 
+###########################################
+# Shared Server
+###########################################
+dispatchers="(PROTOCOL=TCP) (SERVICE=UPGRXDB)"
+ 
+###########################################
+# Sort, Hash Joins, Bitmap Indexes
+###########################################
+pga_aggregate_target=209715200
+ 
+###########################################
+# System Managed Undo and Rollback Segments
+###########################################
+undo_tablespace=UNDOTBS1
+ 
+ 
