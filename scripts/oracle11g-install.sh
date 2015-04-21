@@ -14,13 +14,13 @@ export ORACLE_SID=orcl
 
 #sudo hostname -b oracle12c.localdomain
 
-#cd /vagrant/oracle11g_installer
+cd /vagrant/oracle11g_installer
 
 #sudo yum -y install unzip
-#unzip p10404530_112030_Linux-x86-64_1of7.zip
-#unzip p10404530_112030_Linux-x86-64_2of7.zip
+unzip linux.x64_11gR2_database_1of2.zip
+unzip linux.x64_11gR2_database_2of2.zip
 
-cd /home/oracle
+#cd /home/oracle
 
 #copy in oracle .bash_profile
 
