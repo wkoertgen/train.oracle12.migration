@@ -1,6 +1,6 @@
 # hello.docker.oracle12c
 
-An experiment trying to get oracle 12c up and running in 5 minutes using vagrant, docker et al.
+An experiment trying to get oracle 12c and Oracle11g up and running in 5 minutes using vagrant, docker et al.
 We want to evaluate the lowest possible entry barrier for getting started with Oracle 12C, e.g. for easy 
 and scalable setup of training sessions, webinars, etc. 
 
@@ -31,12 +31,14 @@ After running
 
     vagrant up
 
-you should be able to connect to the database using *TODO: Port forwarding?*
+you should be able to connect to the databases using vagrant ssh and su - oracle 
 
 - Default password for `sys` and `system` is `vagrant`
-- Service `cdb12c` for container
+- Service `cdb12c` for Oracle12c container
 - Service `pdb` for pluggable database
+- Service `UPGR` for Oracle11g database
 
+There is a more detailed documentation for handling the databases, upgrading, monitoring, testing etc.
 
 ## Links
 
