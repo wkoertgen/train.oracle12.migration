@@ -1,0 +1,27 @@
+#!/bin/sh
+ORACLE_BASE=/u01/app/oracle
+ORACLE_HOME=$ORACLE_BASE/product/12.1.0
+
+if [ "$1" = "" ] ; then
+  ORACLE_SID=CDB1
+else
+  ORACLE_SID=$1
+fi
+
+#TNS_ADMIN=/u01/app/oracle/product/12.1.0.2/network/admin
+TNS_ADMIN=/var/opt/oracle
+NLS_LANG=AMERICAN_AMERICA.AL32UTF8
+PATH=$ORACLE_HOME/bin:$PATH
+LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH
+CLASSPATH=.:$ORACLE_HOME/jdbc/lib/classes12.jar:$ORACLE_HOME/jdbc/lib/nls_charset12.jar:$ORACLE_HOME/rdbms/jlib/xdb.jar:$ORACLE_HOME/lib/xmlparserv2.jar:$ORACLE_HOME/sqlj/lib/utl_dbws.jar
+export ORACLE_BASE ORACLE_HOME ORACLE_SID NLS_LANG CLASSPATH PATH LD_LIBRARY_PATH TNS_ADMIN
+
+export PS1="[$ORACLE_SID] \\u@\\h:\\w\n$ "
+
+alias sql="sqlplus /nolog"
+alias s="sqlplus / as sysdba"
+alias oh="cd $ORACLE_HOME"
+alias l="ls -la"
+
+umask 022
+
