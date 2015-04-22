@@ -24,7 +24,7 @@ You should have installed
     - `linux.x64_11gR2_database_1of2.zip`
     - `linux.x64_11gR2_database_2of2.zip`
 
-## NOTE on Hardware
+### NOTE on Hardware
    this virtualbox needs 4096M memory and 2 CPUs. We can scale down, but running 2 databases
    would result in really bad performance.
 
