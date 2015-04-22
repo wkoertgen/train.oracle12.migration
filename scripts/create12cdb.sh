@@ -33,9 +33,9 @@ sudo -Eu oracle $ORACLE_HOME/bin/dbca -silent \
 -memoryPercentage 40 \
 -listeners LISTENER >> $LOGFILE 2>&1
 
-sudo -Eu oracle $ORACLE_HOME/bin/sqlplus / as sysdba << EOF
-shutdown immediate
-EOF
+#sudo -Eu oracle $ORACLE_HOME/bin/sqlplus / as sysdba << EOF
+#shutdown immediate
+#EOF
 
 sudo cp /vagrant/env/glogin.sql $ORACLE_HOME/sqlplus/admin/glogin.sql
 echo database installation finished $(date) | tee $LOGFILE
