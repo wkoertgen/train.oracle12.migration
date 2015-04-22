@@ -31,3 +31,6 @@ connect SYSTEM/vagrant
 @?/sqlplus/admin/pupbld.sql;
 connect SYSTEM/vagrant
 @?/sqlplus/admin/help/hlpbld.sql helpus.sql;
+connect / as sysdba
+shutdown immediate
+exit

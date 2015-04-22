@@ -4,22 +4,22 @@
 LISTENER =
   (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
 
-cdb12 =
+CDB1 =
   (DESCRIPTION =
     (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
     (CONNECT_DATA =
       (SERVER = DEDICATED)
-      (SERVICE_NAME = cdb12c)
+      (SERVICE_NAME = CDB1)
     )
   )
 
 
-pdb =
+PDB =
   (DESCRIPTION =
     (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
     (CONNECT_DATA =
       (SERVER = DEDICATED)
-      (SERVICE_NAME = pdb)
+      (SERVICE_NAME = PDB)
     )
   )
 

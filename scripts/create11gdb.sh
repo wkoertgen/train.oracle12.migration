@@ -1,12 +1,13 @@
 #!/bin/sh
 
 ORACLE_BASE=/u01/app/oracle
-ORACLE_HOME=$ORACLE_BASE/product/11.2.0/db_1
+#ORACLE_HOME=$ORACLE_BASE/product/11.2.0/db_1
+ORACLE_HOME=$ORACLE_BASE/product/11.2.0/
 ORACLE_SID=UPGR
 PATH=$ORACLE_HOME/bin:$PATH; 
 export ORACLE_BASE ORACLE_HOME ORACLE_SID PATH
 echo Database UPGR creation in progress $(date) 
-echo check /vagrant/logs for possible errors 
+echo check $LOGFILE for possible errors 
 echo "wait for the message Database creation finished ..."
 
 #sudo -Eu oracle umask 0027

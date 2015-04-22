@@ -2,46 +2,17 @@
 
 RUNTIME=$(date +%y%m%d%H%M)
 LOGFILE=/vagrant/logs/create12cdb.log$RUNTIME
-echo database cdb12c creation in progress $(date) | tee $LOGFILE
+echo database CDB1 creation in progress $(date) | tee $LOGFILE
+echo check $LOGFILE for possible errors
 echo wait for the message database installation finished
-echo check /vagrant/logs for possible errors
 
 export ORACLE_HOSTNAME=oracle12c.localdomain
-export ORACLE_UNQNAME=orcl
 export ORACLE_BASE=/u01/app/oracle
-export ORACLE_HOME=$ORACLE_BASE/product/12.1.0/db_1
-export ORACLE_SID=cdb12c
+export ORACLE_HOME=$ORACLE_BASE/product/12.1.0
 
-#configure listener
+# netconfiguration in postinstall.sh
 
-#SRC=/vagrant/env/listener.ora
-DEST=$ORACLE_HOME/network/admin/listener.ora
-#sudo cp $SRC $DEST
-#sudo chown oracle:oinstall $DEST
-#sudo chmod 0644 $DEST
-sudo rm $DEST
-
-#start listener
-
-sudo -Eu oracle $ORACLE_HOME/bin/lsnrctl start >> $LOGFILE
-
-#install oracle service
-SRC=/vagrant/env/etc/init.d/oracle
-DEST=/etc/init.d/oracle
-sudo cp $SRC $DEST
-sudo chmod 0755 $DEST
-
-#set oracle service to start at boot
-sudo chkconfig oracle on >> $LOGFILE
-
-#sqlplus startup config file
-SRC=/vagrant/env/glogin.sql
-DEST=$ORACLE_HOME/sqlplus/admin/glogin.sql
-sudo cp $SRC $DEST
-sudo chown oracle:oinstall $DEST
-sudo chmod 0644 $DEST
-
-echo create the container and a pluggable database | tee $LOGFILE append
+echo create the container and a pluggable database | tee -a $LOGFILE
 
 sudo -Eu oracle $ORACLE_HOME/bin/dbca -silent \
 -createDatabase \
@@ -50,7 +21,7 @@ sudo -Eu oracle $ORACLE_HOME/bin/dbca -silent \
 -sid CDB1 \
 -createAsContainerDatabase true \
 -numberOfPdbs 1 \
--pdbName pdb1 \
+-pdbName PDB1 \
 -pdbadminUsername vagrant \
 -pdbadminPassword vagrant \
 -SysPassword vagrant \
@@ -60,6 +31,11 @@ sudo -Eu oracle $ORACLE_HOME/bin/dbca -silent \
 -storageType FS \
 -characterSet AL32UTF8 \
 -memoryPercentage 40 \
--listeners LISTENER >> $LOGFILE
+-listeners LISTENER >> $LOGFILE 2>&1
 
+sudo -Eu oracle $ORACLE_HOME/bin/sqlplus / as sysdba << EOF
+shutdown immediate
+EOF
+
+sudo cp /vagrant/env/glogin.sql $ORACLE_HOME/sqlplus/admin/glogin.sql
 echo database installation finished $(date) | tee $LOGFILE

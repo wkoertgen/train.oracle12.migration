@@ -1,6 +1,6 @@
 #!/bin/sh
 ORACLE_BASE=/u01/app/oracle
-ORACLE_HOME=$ORACLE_BASE/product/11.2.0/db_1
+ORACLE_HOME=$ORACLE_BASE/product/11.2.0
 
 if [ "$1" = "" ] ; then
   ORACLE_SID=UPGR

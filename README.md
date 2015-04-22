@@ -18,12 +18,14 @@ You should have installed
     - `linuxamd64_12102_database_2of2.zip` (967.5M)
 - Place the zip archives in `12c_installer/`
 
-### Oracle 11gR2
+### Oracle 11.2.0.1 - this is availale with a developer license , the later releases unfortunately not
 
-- Download [Database Install files (1 and 2)](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/112020-zlinux64-352074.html)
-    - `linux.zseries64_11gR2_database_1of2.zip`
-    - `linux.zseries64_11gR2_database_2of2.zip`
-- Place the zip archives in `11g_installer/`
+- Download [Database Install files (1 and 2)](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/112010-linx8664soft-100572.html)
+    - `linux.x64_11gR2_database_1of2.zip`
+    - `linux.x64_11gR2_database_2of2.zip`
+
+## NOTE on Hardware: this virtualbox needs 4096M memory and 2 CPUs. We can scale down, but running 2 databases
+   would result in really bad performance.
 
 ## Connect to Database
 
@@ -38,7 +40,7 @@ you should be able to connect to the databases using vagrant ssh and su - oracle
 - Service `pdb` for pluggable database
 - Service `UPGR` for Oracle11g database
 
-There is a more detailed documentation for handling the databases, upgrading, monitoring, testing etc.
+There is an OracleVagrantFAQ.pdf on handling the databases, upgrading, monitoring, testing etc.
 
 ## Links
 
