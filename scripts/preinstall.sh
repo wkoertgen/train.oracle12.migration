@@ -4,7 +4,7 @@ RUNTIME=$(date +%y%m%d%H%M)
 LOGFILE=/vagrant/logs/preinstall.log$RUNTIME
 
 echo  Prerequisites installation in progress $(date) | tee $LOGFILE
-echo check /vagrant/logs for possible errors
+echo check $LOGFILE for possible errors
 echo wait for the message Prerequisites installation finished
 
 
