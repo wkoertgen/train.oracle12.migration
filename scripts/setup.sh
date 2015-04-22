@@ -15,7 +15,7 @@ if [[ $? != "0" ]]; then echo "ERROR in preinstall.sh - aborting setup"; exit; f
 if [[ $? != "0" ]]; then echo "ERROR in oracle12c-install.sh - aborting setup"; exit; fi
 
 # create Oracle12c Containerdatabase + pluggable database
-vagrant/scripts/create12cdb.sh
+/vagrant/scripts/create12cdb.sh
 if [[ $? != "0" ]]; then echo "ERROR in create12cdb.sh - aborting setup"; exit; fi
 
 
