@@ -36,7 +36,7 @@ sudo chown oracle:oinstall /u01
 cd /vagrant/12c_installer/database
 
 sudo -Eu oracle ./runInstaller -showProgress -silent -waitforcompletion -ignoreSysPrereqs \
--responseFile /vagrant/scripts/oracle12c.rsp | tee $LOGFILE 2>&1
+-responseFile /vagrant/scripts/oracle12c.rsp >> $LOGFILE 2>&1
 
 errorlevel=$?
 
