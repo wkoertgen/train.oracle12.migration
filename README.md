@@ -1,6 +1,6 @@
-# hello.docker.oracle12c
+# train.oracle12c.migration
 
-An experiment trying to get oracle 12c and Oracle11g up and running in 5 minutes using vagrant, docker et al.
+An experiment trying to get Oracle12c and Oracle11g up and running using vagrant.
 We want to evaluate the lowest possible entry barrier for getting started with Oracle 12C, e.g. for easy 
 and scalable setup of training sessions, webinars, etc. 
 
@@ -25,8 +25,8 @@ You should have installed
     - `linux.x64_11gR2_database_2of2.zip`
 
 ### NOTE on Hardware
-   this virtualbox needs 4096M memory and 2 CPUs. We can scale down, but running 2 databases
-   would result in really bad performance.
+
+This virtualbox needs 4GB memory and 2 CPUs. We can scale down, but running 2 databases would result in really bad performance.
 
 ## Connect to Database
 
@@ -37,15 +37,15 @@ After running
 you should be able to connect to the databases using vagrant ssh and su - oracle 
 
 - Default password for `sys` and `system` is `vagrant`
-- Service `cdb12c` for Oracle12c container
-- Service `pdb` for pluggable database
+- Service `CDB12` for Oracle12c container
+- Service `PDB` for pluggable database
 - Service `UPGR` for Oracle11g database
 
 There is an OracleVagrantFAQ.pdf on handling the databases, upgrading, monitoring, testing etc.
 
 ## Links
 
-We considered gratefully the following links
+We gratefully considered the following links
 
 - [dbehnke/oracle12c-vagrant (GitHub)](https://github.com/dbehnke/oracle12c-vagrant)
 - [Starting From Windows with Linux VM as Docker Host (AMIS Technology Blog)](https://technology.amis.nl/2015/03/15/docker-take-two-starting-from-windows-with-linux-vm-as-docker-host/)
