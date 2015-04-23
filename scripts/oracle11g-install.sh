@@ -1,6 +1,6 @@
 
 RUNTIME=$(date +%y%m%d%H%M)
-LOGFILE=/vagrant/logs/oracle11g-install.log$RUNTIME
+LOGFILE=/vagrant/logs/oracle11g-install_$RUNTIME.log
 
 echo Installing Oracle11g in progress $(date) | tee $LOGFILE
 echo this Oracle Release does not output the progress of installation

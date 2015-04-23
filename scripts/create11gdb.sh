@@ -7,7 +7,6 @@ ORACLE_SID=UPGR
 PATH=$ORACLE_HOME/bin:$PATH; 
 export ORACLE_BASE ORACLE_HOME ORACLE_SID PATH
 echo Database UPGR creation in progress $(date) 
-echo check $LOGFILE for possible errors 
 echo "wait for the message Database creation finished ..."
 
 #sudo -Eu oracle umask 0027
@@ -19,7 +18,7 @@ sudo -Eu oracle mkdir -p $ORACLE_HOME/dbs
 #sudo -Eu oracle umask ${OLD_UMASK}
 
 RUNTIME=$(date +%y%m%d%H%M)
-LOGFILE=/vagrant/logs/create11gdb.log$RUNTIME
+LOGFILE=/vagrant/logs/create11gdb_$RUNTIME.log
 
 sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/create11gdb.sql > $LOGFILE
 sudo cp /vagrant/env/initUPGR.ora $ORACLE_HOME/dbs
@@ -28,8 +27,3 @@ sudo chmod 644 $ORACLE_HOME/dbs/initUPGR.ora
 sudo cp /vagrant/env/glogin.sql $ORACLE_HOME/sqlplus/admin/glogin.sql
 
 echo Database UPGR creation finished $(date)
-
-
-
-
-

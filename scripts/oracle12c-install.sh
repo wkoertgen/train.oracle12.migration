@@ -1,7 +1,5 @@
-
-
 RUNTIME=$(date +%y%m%d%H%M)
-LOGFILE=/vagrant/logs/oracle12c-install.log$RUNTIME
+LOGFILE=/vagrant/logs/oracle12c-install_$RUNTIME.log
 echo Oracle12c installation in progress $(date) | tee $LOGFILE
 echo wait for the message Oracle12c installation finished
 echo check $LOGFILE for possible errors
@@ -56,4 +54,4 @@ sudo /u01/app/oraInventory/orainstRoot.sh >> $LOGFILE 2>&1
 
 sudo /u01/app/oracle/product/12.1.0/db_1/root.sh >> $LOGFILE 2>&1
 
-echo Oracle12c installation finished $(date) | tee $LOGFILE
+echo Oracle12c installation finished $(date) | tee -a $LOGFILE

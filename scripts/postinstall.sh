@@ -1,7 +1,5 @@
-
-
 RUNTIME=$(date +%y%m%d%H%M)
-LOGFILE=/vagrant/logs/postinstall.log$RUNTIME
+LOGFILE=/vagrant/logs/postinstall_$RUNTIME.log
 
 echo postinstall $(date) | tee $LOGFILE
 echo check for errors in /vagrant/logs
