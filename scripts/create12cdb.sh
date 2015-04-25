@@ -1,10 +1,10 @@
 
 
 RUNTIME=$(date +%y%m%d%H%M)
-LOGFILE=/vagrant/logs/$RUNTIME.create12cdb.log
+LOGFILE=/vagrant/logs/create12cdb_$RUNTIME.log
 echo database CDB1 creation in progress $(date) | tee $LOGFILE
 echo Logfile is $LOGFILE
-echo wait for the message database installation finished
+echo "wait for database creation to finish ..."
 
 export ORACLE_HOSTNAME=oracle12c.localdomain
 export ORACLE_BASE=/u01/app/oracle
@@ -30,4 +30,4 @@ sudo -Eu oracle $ORACLE_HOME/bin/dbca -silent \
 -listeners LISTENER >> $LOGFILE 2>&1
 
 sudo cp /vagrant/env/glogin.sql $ORACLE_HOME/sqlplus/admin/glogin.sql
-echo database installation finished $(date) | tee -a $LOGFILE
+echo database creation finished $(date) | tee -a $LOGFILE

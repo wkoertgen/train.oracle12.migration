@@ -1,9 +1,9 @@
 
 RUNTIME=$(date +%y%m%d%H%M)
-LOGFILE=/vagrant/logs/$RUNTIME.oracle12c-install.log
+LOGFILE=/vagrant/logs/oracle12c-install_$RUNTIME.log
 echo Oracle12c installation in progress $(date) | tee $LOGFILE
 echo Logfile is $LOGFILE
-echo wait for the message Oracle12c installation finished
+echo "wait for Oracle12c installation to finish ..."
 
 export ORACLE_HOSTNAME=oracle12c.localdomain
 export ORACLE_UNQNAME=CDB1

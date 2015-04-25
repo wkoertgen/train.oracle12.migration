@@ -1,15 +1,16 @@
 
 
 RUNTIME=$(date +%y%m%d%H%M)
-LOGFILE=/vagrant/logs/$RUNTIME.preinstall.log
+LOGFILE=/vagrant/logs/preinstall_$RUNTIME.log
 
 echo  preinstall in progress $(date) | tee $LOGFILE
 echo Logfile is $LOGFILE 
-echo wait for the message preinstall finished
+echo "wait for preinstall to finish ..."
 
 
 #prerequisites
 sudo yum -y install oracle-rdbms-server-12cR1-preinstall >> $LOGFILE 2>&1
+if [[ "$?" != "0" ]]; then exit 1; fi
 sudo passwd oracle >> $LOGFILE 2>&1 << EOF 
 vagrant
 vagrant

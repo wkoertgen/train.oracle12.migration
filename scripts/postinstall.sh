@@ -1,10 +1,11 @@
 
 
 RUNTIME=$(date +%y%m%d%H%M)
-LOGFILE=/vagrant/logs/$RUNTIME.postinstall.log
+LOGFILE=/vagrant/logs/postinstall_$RUNTIME.log
 
 echo postinstall in process $(date) | tee $LOGFILE
 echo Logfile is $LOGFILE
+echo "wait for postinstall to finish ..."
 
 #oratab
 echo Installing /etc/oratab >> $LOGFILE 

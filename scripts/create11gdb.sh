@@ -1,9 +1,9 @@
 RUNTIME=$(date +%y%m%d%H%M)
-LOGFILE=/vagrant/logs/$RUNTIME.create11gdb.log
+LOGFILE=/vagrant/logs/create11gdb_$RUNTIME.log
 
 echo Database UPGR creation in progress $(date) | tee $LOGFILE
 echo Logfile is $LOGFILE
-echo "wait for the message Database creation finished ..."
+echo "wait for database creation to finish ..."
 
 ORACLE_BASE=/u01/app/oracle
 ORACLE_HOME=$ORACLE_BASE/product/11.2.0
