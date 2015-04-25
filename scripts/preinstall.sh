@@ -18,9 +18,10 @@ EOF
 
 sudo yum -y install unzip >> $LOGFILE
 
-sudo cp /vagrant/env/etc/hosts /etc/hosts >> $LOGFILE 2>&1
-sudo cp /vagrant/env/etc/sysconfig/network /etc/sysconfig/network >> $LOGFILE 2>&1
-sudo /etc/init.d/network restart >> $LOGFILE
+# wil be in postinstall
+#sudo cp /vagrant/env/etc/hosts /etc/hosts >> $LOGFILE 2>&1
+#sudo cp /vagrant/env/etc/sysconfig/network /etc/sysconfig/network >> $LOGFILE 2>&1
+#sudo /etc/init.d/network restart >> $LOGFILE
 
 echo  preinstall finished $(date) | tee -a $LOGFILE
 
