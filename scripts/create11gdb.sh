@@ -21,6 +21,7 @@ RUNTIME=$(date +%y%m%d%H%M)
 LOGFILE=/vagrant/logs/create11gdb_$RUNTIME.log
 
 sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/create11gdb.sql > $LOGFILE
+if [[ "$?" != "0" ]]; then exit 1; fi
 sudo cp /vagrant/env/initUPGR.ora $ORACLE_HOME/dbs
 sudo chown oracle:oinstall $ORACLE_HOME/dbs/initUPGR.ora
 sudo chmod 644 $ORACLE_HOME/dbs/initUPGR.ora
