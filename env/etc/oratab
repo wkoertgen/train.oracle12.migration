@@ -20,5 +20,5 @@
 # Multiple entries with the same $ORACLE_SID are not allowed.
 #
 #
-CDB12c:/u01/app/oracle/product/12.1.0/db_1:N
-UPGR:/u01/app/oracle/product/11.2.0/db_1:N
+CDB1:/u01/app/oracle/product/12.1.0:Y
+UPGR:/u01/app/oracle/product/11.2.0:Y

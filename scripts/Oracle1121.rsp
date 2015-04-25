@@ -18,7 +18,7 @@ oracle.install.option=INSTALL_DB_SWONLY
 # hostname rather than using the first hostname found on the system
 # (e.g., for systems with multiple hostnames and network interfaces).
 #-------------------------------------------------------------------------------
-ORACLE_HOSTNAME=localhost
+ORACLE_HOSTNAME=oracle12c.localdomain
 
 #-------------------------------------------------------------------------------
 # Unix group to be set for the inventory directory.  
