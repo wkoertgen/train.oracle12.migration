@@ -28,6 +28,7 @@ sudo -Eu oracle $ORACLE_HOME/bin/dbca -silent \
 -characterSet AL32UTF8 \
 -memoryPercentage 40 \
 -listeners LISTENER >> $LOGFILE 2>&1
+if [[ "$?" != "0" ]]; then exit 1; fi
 
-sudo cp /vagrant/env/glogin.sql $ORACLE_HOME/sqlplus/admin/glogin.sql
+sudo cp /vagrant/env/glogin.sql $ORACLE_HOME/sqlplus/admin/glogin.sql 
 echo database creation finished $(date) | tee -a $LOGFILE
