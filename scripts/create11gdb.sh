@@ -18,9 +18,7 @@ sudo -Eu oracle mkdir -p $ORACLE_BASE/oradata/UPGR
 sudo -Eu oracle mkdir -p $ORACLE_HOME/dbs
 
 sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/create11gdb.sql >> $LOGFILE
-if [[ $? != "0" ]]
-exit 1
-fi
+if [[ "$? != "0" ]]; then exit 1; fi
 
 sudo cp /vagrant/env/initUPGR.ora $ORACLE_HOME/dbs
 sudo chown oracle:oinstall $ORACLE_HOME/dbs/initUPGR.ora
