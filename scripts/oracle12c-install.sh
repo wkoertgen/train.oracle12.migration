@@ -22,8 +22,8 @@ unzip linuxamd64_12102_database_2of2.zip  >> $LOGFILE 2>&1
 
 #/u01 directory was already created by preinstall
 sudo rm -r -f /u01
-sudo mkdir /u01
-sudo chown oracle:oinstall /u01
+sudo mkdir -p /u01/app
+sudo chown -R oracle:oinstall /u01
 
 #run oracle installer
 
