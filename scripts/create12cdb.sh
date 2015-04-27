@@ -1,15 +1,14 @@
+
+
 RUNTIME=$(date +%y%m%d%H%M)
 LOGFILE=/vagrant/logs/create12cdb_$RUNTIME.log
 echo database CDB1 creation in progress $(date) | tee $LOGFILE
-echo wait for the message database installation finished
+echo Logfile is $LOGFILE
+echo "wait for database creation to finish ..."
 
 export ORACLE_HOSTNAME=oracle12c.localdomain
 export ORACLE_BASE=/u01/app/oracle
 export ORACLE_HOME=$ORACLE_BASE/product/12.1.0
-
-# netconfiguration in postinstall.sh
-
-echo create the container and a pluggable database | tee -a $LOGFILE
 
 sudo -Eu oracle $ORACLE_HOME/bin/dbca -silent \
 -createDatabase \
@@ -24,15 +23,12 @@ sudo -Eu oracle $ORACLE_HOME/bin/dbca -silent \
 -SysPassword vagrant \
 -SystemPassword vagrant \
 -emConfiguration NONE \
--datafileDestination /u01/oradata \
+-datafileDestination /u01/app/oracle/oradata \
 -storageType FS \
 -characterSet AL32UTF8 \
 -memoryPercentage 40 \
 -listeners LISTENER >> $LOGFILE 2>&1
+if [[ "$?" != "0" ]]; then exit 1; fi
 
-#sudo -Eu oracle $ORACLE_HOME/bin/sqlplus / as sysdba << EOF
-#shutdown immediate
-#EOF
-
-sudo cp /vagrant/env/glogin.sql $ORACLE_HOME/sqlplus/admin/glogin.sql
-echo database installation finished $(date) | tee -a $LOGFILE
+sudo cp /vagrant/env/glogin.sql $ORACLE_HOME/sqlplus/admin/glogin.sql 
+echo database creation finished $(date) | tee -a $LOGFILE

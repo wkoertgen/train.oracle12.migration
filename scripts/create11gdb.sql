@@ -1,5 +1,5 @@
-
 connect / as SYSDBA
+whenever sqlerror exit failure
 set echo on
 startup nomount pfile="/vagrant/env/initUPGR.ora";
 CREATE DATABASE "UPGR"
@@ -31,6 +31,8 @@ connect SYSTEM/vagrant
 @?/sqlplus/admin/pupbld.sql;
 connect SYSTEM/vagrant
 @?/sqlplus/admin/help/hlpbld.sql helpus.sql;
-connect / as sysdba
-shutdown immediate
+connect / as SYSDBA
+create spfile from pfile;
+shutdown immediate;
+startup;
 exit

@@ -16,10 +16,10 @@ export TMP=/tmp
 export TMPDIR=$TMP
 
 export ORACLE_HOSTNAME=oracle12c.localdomain
-export ORACLE_UNQNAME=cdb12c
+export ORACLE_UNQNAME=CDB1
 export ORACLE_BASE=/u01/app/oracle
-export ORACLE_HOME=$ORACLE_BASE/product/12.1.0/db_1
-export ORACLE_SID=cdb12c
+export ORACLE_HOME=$ORACLE_BASE/product/12.1.0
+export ORACLE_SID=CDB1
 
 export PATH=/usr/sbin:$PATH
 export PATH=$ORACLE_HOME/bin:$PATH

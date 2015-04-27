@@ -1,14 +1,15 @@
+
 RUNTIME=$(date +%y%m%d%H%M)
 LOGFILE=/vagrant/logs/oracle12c-install_$RUNTIME.log
 echo Oracle12c installation in progress $(date) | tee $LOGFILE
-echo wait for the message Oracle12c installation finished
-echo check $LOGFILE for possible errors
+echo Logfile is $LOGFILE
+echo "wait for Oracle12c installation to finish ..."
 
 export ORACLE_HOSTNAME=oracle12c.localdomain
-export ORACLE_UNQNAME=orcl
+export ORACLE_UNQNAME=CDB1
 export ORACLE_BASE=/u01/app/oracle
-export ORACLE_HOME=$ORACLE_BASE/product/12.1.0/db_1
-export ORACLE_SID=cdb12c
+export ORACLE_HOME=$ORACLE_BASE/product/12.1.0
+export ORACLE_SID=CDB1
 
 sudo hostname -b oracle12c.localdomain 
 
@@ -17,24 +18,19 @@ cd /vagrant/12c_installer
 unzip linuxamd64_12102_database_1of2.zip >> $LOGFILE 2>&1
 unzip linuxamd64_12102_database_2of2.zip  >> $LOGFILE 2>&1
 
-cd /home/oracle
 
-#copy in oracle .bash_profile
 
-sudo -Eu oracle cp /vagrant/env/bash_profile /home/oracle/.bash_profile 
-
-#create /u01 directory
-
+#/u01 directory was already created by preinstall
 sudo rm -r -f /u01
-sudo mkdir /u01
-sudo chown oracle:oinstall /u01
+sudo mkdir -p /u01/app
+sudo chown -R oracle:oinstall /u01
 
 #run oracle installer
 
 cd /vagrant/12c_installer/database
 
 sudo -Eu oracle ./runInstaller -showProgress -silent -waitforcompletion -ignoreSysPrereqs \
--responseFile /vagrant/scripts/oracle12c.rsp >> $LOGFILE 2>&1
+-responseFile /vagrant/scripts/oracle12c.rsp  >> $LOGFILE 2>&1
 
 errorlevel=$?
 
@@ -46,12 +42,12 @@ fi
 cd
 
 #clean up database_installer directory
-rm -r -f /vagrant/database_installer/database
+rm -r -f /vagrant/12c_installer/database 
 
 #run the root scripts
 
 sudo /u01/app/oraInventory/orainstRoot.sh >> $LOGFILE 2>&1
 
-sudo /u01/app/oracle/product/12.1.0/db_1/root.sh >> $LOGFILE 2>&1
+sudo /u01/app/oracle/product/12.1.0/root.sh >> $LOGFILE 2>&1
 
 echo Oracle12c installation finished $(date) | tee -a $LOGFILE

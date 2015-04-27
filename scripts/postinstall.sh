@@ -1,8 +1,11 @@
+
+
 RUNTIME=$(date +%y%m%d%H%M)
 LOGFILE=/vagrant/logs/postinstall_$RUNTIME.log
 
-echo postinstall $(date) | tee $LOGFILE
-echo check for errors in /vagrant/logs
+echo postinstall in process $(date) | tee $LOGFILE
+echo Logfile is $LOGFILE
+echo "wait for postinstall to finish ..."
 
 #oratab
 echo Installing /etc/oratab >> $LOGFILE 
@@ -13,11 +16,12 @@ sudo chmod 0644 /etc/oratab  >> $LOGFILE 2>&1
 # /usr/local/bin
 echo Installing in /usr/local/bin >> $LOGFILE
 sudo cp /vagrant/env/upgr /usr/local/bin >> $LOGFILE 2>&1
-#sudo chmod 00755 /usr/local/bin/upgr
 sudo cp /vagrant/env/cdb1 /usr/local/bin >> $LOGFILE 2>&1
-#sudo chmod 00755 /usr/local/bin/cdb1
 
-echo Installing in /var/opt/oracle >> $LOGFILE
+# bash_profile
+sudo -Eu cp /vagrant/env/bash_profile /home/oracle/.bash_profile >> $LOGFILE 2>&1
+
+# listener & tnsnames
 sudo mkdir -p /var/opt/oracle >> $LOGFILE 2>&1
 sudo chown oracle:oinstall /var/opt/oracle >> $LOGFILE 2>&1
 sudo chmod 766 /var/opt/oracle >> $LOGFILE 2>&1
@@ -26,11 +30,23 @@ sudo cp /vagrant/env/tnsnames.ora /var/opt/oracle >> $LOGFILE 2>&1
 sudo chown oracle:oinstall /var/opt/oracle/listener.ora >> $LOGFILE 2>&1
 sudo chown oracle:oinstall /var/opt/oracle/tnsnames.ora >> $LOGFILE 2>&1
 
-echo starting listener >> $LOGFILE
+# listener
 export ORACLE_BASE=/u01/app/oracle
 export ORACLE_HOME=$ORACLE_BASE/product/12.1.0
 export TNS_ADMIN=/var/opt/oracle
 export ORACLE_HOSTNAME=oracle12c.localdomain
 sudo -Eu oracle $ORACLE_HOME/bin/lsnrctl start listener >> $LOGFILE 2>&1
 
-echo setup connectivity finished $(date) | tee -a $LOGFILE
+# implement oracle at boot time
+SRC=/vagrant/env/etc/init.d/oracle
+DEST=/etc/init.d/oracle
+sudo cp $SRC $DEST
+sudo chmod 0755 $DEST
+
+sudo chkconfig oracle on
+
+sudo cp /vagrant/env/etc/hosts /etc/hosts
+sudo cp /vagrant/env/etc/sysconfig/network /etc/sysconfig/network
+sudo /etc/init.d/network restart >> $LOGFILE 2>&1
+
+echo postinstall finished $(date) | tee -a $LOGFILE

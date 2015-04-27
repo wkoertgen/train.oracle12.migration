@@ -3,9 +3,8 @@ RUNTIME=$(date +%y%m%d%H%M)
 LOGFILE=/vagrant/logs/oracle11g-install_$RUNTIME.log
 
 echo Installing Oracle11g in progress $(date) | tee $LOGFILE
-echo this Oracle Release does not output the progress of installation
-echo "go to $LOGFILE and tail -f the logfile inside the VM"
-echo "wait for the message Oracle11g install finished ..."
+echo Logfile is $LOGFILE
+echo "wait for Oracle11g installation to finish  ..."
 
 
 export ORACLE_HOSTNAME=oracle12c.localdomain
@@ -40,8 +39,8 @@ rm -r -f /vagrant/11g_installer/database
 
 #run the root scripts
 
-sudo /u01/app/oraInventory/orainstRoot.sh >> $LOGFILE 2>&1
+sudo /u01/app/oraInventory11/orainstRoot.sh >> $LOGFILE 2>&1
 
-sudo /u01/app/oracle/product/11.2.0/db_1/root.sh >> $LOGFILE 2>&1
+sudo /u01/app/oracle/product/11.2.0/root.sh >> $LOGFILE 2>&1
 
 echo Oracle11g install finished $(date) | tee -a $LOGFILE
