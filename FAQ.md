@@ -6,6 +6,35 @@ In the `Vagrantfile` there is a line
 	config.vm.provision "shell", path: "scripts/setup.sh"
 
 which refers to this script. You can control the process by uncommenting / comment the scripts
+	
+	# setup.sh controls the process of 
+	# preinstall 
+	# install Oracle SW 
+	# creating databases 
+	# postinstall 
+	# the scripts log into /vagrant/logs/ 
+	
+	# preinstall 
+	#/vagrant/scripts/preinstall.sh 
+	#if [[ $0 != .0. ]]; then echo "ERROR in preinstall.sh - aborting setup.; exit; fi 
+	
+	# Oraclel2 install 
+	#/vagrant/scripts/oraclel2c-install.sh 
+	#if [[ $? != .0. ]]; then echo "ERROR in oraclel2c-install.sh - aborting setup.; exit; fi 
+	
+	# create Oraclel2c Containerdatabase + pluggable database 
+	#/vagrant/scripts/createl2cdb. sh 
+	#if [[ $? != .0. ]]; then echo "ERROR in createl2cdb.sh - aborting setup.; exit; fi 
+	
+	# Oraclellg install 
+	#/vagrant/scripts/oraclellg-install.sh #if [[ $0 != .0. ]]; then echo "ERROR in oraclellg-install.sh - aborting setup.; exit; fi 
+	
+	# create Oraclellg database 
+	#/vagrant/scripts/createllgdb. sh 
+	#if [[ $0 != .0. ]]; then echo "ERROR in createllgdb.sh - aborting setup.; exit; fi 
+	
+	# postinstall /vagrant/scripts/postinstall.sh 
+	#if [[ $0 != .0. ]]; then echo "ERROR in postinstall.sh - aborting setup.; exit; fi 
 
 ## 2. Is Vagrant able to take snapshots?
 Using snapshots with virtualization can be a huge time saver. If you use vagrant with VirtualBox you can install the snapshot plugin [vagrant-vbox-snapshot](https://github.com/dergachev/vagrant-vbox-snapshot) via
@@ -15,6 +44,30 @@ Using snapshots with virtualization can be a huge time saver. If you use vagrant
 When experimenting with your oracle sandbox VM it makes sense to take snapshots, e.g. after the `preinstall`:
 
 	 vagrant snapshot take Initial
+
+which should give an output similar to this:
+
+	==> default: Machine booted and ready! 
+	GuestAdditions 4.3.26 running --- OK. 
+	==> default: Checking for guest additions in VM... 
+	==> default: Mounting shared folders... 
+	==> default: /vagrant a> /home/oracle/git/train.oraclel2c.migration 
+	==> default: Running provisioner: shell... 
+	==> default: Running: Amp/vagrant-she1120150422-13630-19czwml.sh 
+	==> default: Prerequisites installation in progress Wed Apr 22 08:55:42 UTC 2015 
+	==> default: check /vagrant/logs for possible errors 
+	==> default: wait for the message Prerequisites installation finished 
+	==> default: Prerequisites installation finished Wed Apr 22 08:56:57 UTC 2015 
+	
+	oracle@thinkpad3:—/git/train.oraclel2c.migration$ vagrant snapshot take Initial 
+	Taking snapshot Initial 
+	0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+	
+	oracle@thinkpad3:—/git/train.oraclel2c.migration$ vagrant snapshot list 
+	Listing snapshots for 'default':
+	    Name: Initial (UUID: b0931b4b-6c57-4df4-b1b2-41e7ebl4e6bb) *
+	
+	oracle@thinkpad3:—/git/train.oraclel2c.migration$ 
 
 When you want to start the next step, just enter 
 
