@@ -10,7 +10,8 @@ I was inspired by the idea of training **Installing and Upgrading** in a Virtual
 But  working with that Virtualbox I saw the technical limitations, eg. tiny fontsize, slow mouse pointer because of the mouse capture, difficult mounting of shared folders, the integrated SqlDeveloper unreadable with it's very tiny fontsizes and more slower as usually, etc.
 What brought me to write my own solution was finally the circumstance, that people could learn Upgrading but not Installing.
 
-In this solution one can do both: study the **different installation scripts** of Oracle rainSW and creating databases and train **Upgrading**.
+In this solution one can do both: study the **different installation scripts** of Oracle SW and creating databases and one can train **Upgrading**.
+
 Additionally you may explore and take exercises on whatever you want, eg. compare the different **Optimizers**, which is crucial for Migrations.
 
 Or you may  explore the exciting **In-Memory Database** und compare the result with both Optimizers.
@@ -23,7 +24,7 @@ When you have Vagrant and a compatible Guest Addition - see the **README.md** - 
 ## 3. Can there be problems with the setup ?
 The only problem I have experienced were the missing zip-files in the expected place - see the **README.md**
 
-You can download these files from the indicated Oraclepages when you have Developer License, which comes with a free Oracle Account.
+You can download these files from the indicated Oraclepages when you have a Developer License, which comes with a free Oracle Account.
 
 ## 4. How can i control the setup process?
 In the `Vagrantfile` there is a line 
@@ -100,8 +101,7 @@ When you want to start the next step, just enter
 
 ## 5. Which shared folders do exist? 
 In the work directory where you execute `vagrant up`, there are 2 directories `./logs` and `./scripts`. The provisioning scripts log into `./logs`. In the `./develop` you may store your own SQL-scripts.
-Connect to the VM like that – provided that you know / change the password of the user oracle.
-Go to your vagrant-root directory /vagrant an walk around.
+Connect to the guest VM, go to your vagrant-root directory /vagrant and walk around.
 
 ## 6. What should i do for entering the VM?
 To connect to the guest VM type
@@ -120,7 +120,7 @@ Usually the first step on an unknown oracle machine is
 
 This informs you that we have two Oracle environments and two databases `CDB1` and `UPGR`. Choose your environment by using little scripts in `/usr/local/bin`
 
- – `cdb1` sets up the Oracle12g environment and 
+ - `cdb1` sets up the Oracle12g environment and 
  - `upgr` sets up the Oracle11g environment. 
  
 Both provide practical aliases as 
@@ -139,7 +139,7 @@ Feel free to add your own shortcuts.
 	oracle    3112     1  0 10:04 ?        00:00:00 ora_pmon_UPGR
 	[oracle@localhost ~]$ 
 	 
-The databases and the listeners are started after the setup and at boot-time. It is worth to study thourougly this sophisticated mechanisms in the `postinst.sh`.
+The databases and the listeners are started after the setup and at boot-time. It is worth to study thouroughly this sophisticated mechanisms in the `postinstall.sh`.
 
 To see, which listeners are running do
 
