@@ -7,8 +7,8 @@ http://www.oracle.com/technetwork/community/developer-vm/index.html
 
 I was inspired by the idea of training **Installing and Upgrading** in a VirtualBox. This is what I missed all the time working as DBA.
 
-But  working with that Virtualbox I saw the technical limitations, eg. tiny fontsize, slow mouse pointer because of the mouse capture, difficult mounting of shared folders, the integrated SqlDeveloper unreadable with it's very tiny fontsizes and more slower as usually, etc.
-What brought me to write my own solution was finally the circumstance, that people could learn Upgrading but not Installing.
+But  working with that Virtualbox I saw the technical limitations, eg. tiny fontsize, slow mouse pointer because of the mouse capture, difficult mounting of shared folders, the integrated SqlDeveloper unreadable with it's very tiny fontsizes and slower as usually, etc.
+What brought me to write my own solution was finally the circumstance, that people could learn Upgrading, but not Installing.
 
 In this solution one can do both: study the **different installation scripts** of Oracle SW and creating databases and one can train **Upgrading**.
 
@@ -245,38 +245,38 @@ It is crucial to know the options of a database, because it decides what I can d
 
 If you execute it in the `CDB1` database you see  this listing
 
-SYS@CDB1>@registry.sql
-
-COMP_NAME				  STATUS     VERSION	 MODIFIED
-	----------------------------------------- ---------- ----------- --------------------
-	Oracle Database Vault			  VALID      12.1.0.2.0  26-APR-2015 07:39:24
-	Oracle Application Express		  VALID      4.2.5.00.08 26-APR-2015 07:39:24
-	Oracle Label Security			  VALID      12.1.0.2.0  26-APR-2015 07:39:24
-	Spatial 				  VALID      12.1.0.2.0  26-APR-2015 07:39:23
-	Oracle Multimedia			  VALID      12.1.0.2.0  26-APR-2015 07:39:19
-	Oracle Text				  VALID      12.1.0.2.0  26-APR-2015 07:39:19
-	Oracle Workspace Manager		  VALID      12.1.0.2.0  26-APR-2015 07:39:13
-	Oracle XML Database			  VALID      12.1.0.2.0  26-APR-2015 07:39:10
-	Oracle Database Catalog Views		  VALID      12.1.0.2.0  26-APR-2015 07:39:06
-	Oracle Database Packages and Types	  VALID      12.1.0.2.0  26-APR-2015 07:39:08
-	JServer JAVA Virtual Machine		  VALID      12.1.0.2.0  26-APR-2015 07:39:17
-	Oracle XDK				  VALID      12.1.0.2.0  26-APR-2015 07:39:18
-	Oracle Database Java Packages		  VALID      12.1.0.2.0  26-APR-2015 07:39:18
-	OLAP Analytic Workspace 		  VALID      12.1.0.2.0  26-APR-2015 07:39:20
-	Oracle OLAP API 			  VALID      12.1.0.2.0  26-APR-2015 07:39:22
-	Oracle Real Application Clusters	  OPTION OFF 12.1.0.2.0  07-JUL-2014 06:52:28
-	SYS@CDB1>
+	SYS@CDB1>@registry.sql
+	
+	COMP_NAME				  STATUS     VERSION	 MODIFIED
+		----------------------------------------- ---------- ----------- --------------------
+		Oracle Database Vault			  VALID      12.1.0.2.0  26-APR-2015 07:39:24
+		Oracle Application Express		  VALID      4.2.5.00.08 26-APR-2015 07:39:24
+		Oracle Label Security			  VALID      12.1.0.2.0  26-APR-2015 07:39:24
+		Spatial 				  VALID      12.1.0.2.0  26-APR-2015 07:39:23
+		Oracle Multimedia			  VALID      12.1.0.2.0  26-APR-2015 07:39:19
+		Oracle Text				  VALID      12.1.0.2.0  26-APR-2015 07:39:19
+		Oracle Workspace Manager		  VALID      12.1.0.2.0  26-APR-2015 07:39:13
+		Oracle XML Database			  VALID      12.1.0.2.0  26-APR-2015 07:39:10
+		Oracle Database Catalog Views		  VALID      12.1.0.2.0  26-APR-2015 07:39:06
+		Oracle Database Packages and Types	  VALID      12.1.0.2.0  26-APR-2015 07:39:08
+		JServer JAVA Virtual Machine		  VALID      12.1.0.2.0  26-APR-2015 07:39:17
+		Oracle XDK				  VALID      12.1.0.2.0  26-APR-2015 07:39:18
+		Oracle Database Java Packages		  VALID      12.1.0.2.0  26-APR-2015 07:39:18
+		OLAP Analytic Workspace 		  VALID      12.1.0.2.0  26-APR-2015 07:39:20
+		Oracle OLAP API 			  VALID      12.1.0.2.0  26-APR-2015 07:39:22
+		Oracle Real Application Clusters	  OPTION OFF 12.1.0.2.0  07-JUL-2014 06:52:28
+		SYS@CDB1>
 
 
 See the difference, if you run it in the `UPGR` database:
 
-SYS@UPGR>@registry
-
-COMP_NAME				  STATUS     VERSION	 MODIFIED
------------------------------------------ ---------- ----------- --------------------
-Oracle Workspace Manager		  VALID      11.2.0.1.0  26-APR-2015 08:09:17
-Oracle Database Catalog Views		  VALID      11.2.0.1.0  26-APR-2015 08:08:39
-Oracle Database Packages and Types	  VALID      11.2.0.1.0  26-APR-2015 08:08:39
+	SYS@UPGR>@registry
+	
+	COMP_NAME				  STATUS     VERSION	 MODIFIED
+	----------------------------------------- ---------- ----------- --------------------
+	Oracle Workspace Manager		  VALID      11.2.0.1.0  26-APR-2015 08:09:17
+	Oracle Database Catalog Views		  VALID      11.2.0.1.0  26-APR-2015 08:08:39
+	Oracle Database Packages and Types	  VALID      11.2.0.1.0  26-APR-2015 08:08:39
 
 
 Here I decided to limit the options to the minimum, because we need this database only for educational purposes, i.e. for training the different methods of upgrading a database to Oracle12c. Study the scripts [scripts/create11gdb.sh](scripts/create11gdb.sh) and [scripts/create11gdb.sql](scripts/create11gdb.sql) to see the old manual way of creating a database. 
@@ -285,6 +285,7 @@ The `CDB1` was created using `dbca` in silent mode. Study the scripts [scripts/c
 
 ## 8. Shutdown databases
 For new-comers only: there are different ways of shutting down and starting up, especially in Oracle12c Container Databases. This would be part of on extra workshop. For now see
+
 	SYS@UPGR>shutdown immediate
 	Database closed.
 	Database dismounted.
@@ -306,7 +307,7 @@ For new-comers only: there are different ways of shutting down and starting up, 
 See some good books, e.g. [Vagrant Up and Runnin](http://chimera.labs.oreilly.com/books/1234000001668/) by Mitchell Hashimoto, the author of Vagrant. 
 
 ## 10. As user oracle I cannot execute scripts stored in the shared folders. 
-As user `vagrant` you have no problem, because the shared folder `/vagrant` is owned by user `vagrant`. If you want full compliance of your scripts .eg. in the folder `/vagrant/develop` you could do the following:
+As user `vagrant` you have no problem, because the shared folder `/vagrant` is owned by user `vagrant`. If you want full compliance of your scripts eg. in the folder `/vagrant/develop` you could do the following:
 
 In `Vagrantfile` uncomment the line 
 
