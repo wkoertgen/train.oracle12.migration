@@ -18,11 +18,13 @@ You should have installed
     - `linuxamd64_12102_database_2of2.zip` (967.5M)
 - Place the zip archives in `12c_installer/`
 
-### Oracle 11.2.0.1 - this is availale with a developer license , the later releases unfortunately not
+### Oracle 11gR2
 
 - Download [Database Install files (1 and 2)](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/112010-linx8664soft-100572.html)
     - `linux.x64_11gR2_database_1of2.zip`
     - `linux.x64_11gR2_database_2of2.zip`
+
+**NOTE:** We opted for 11.2.0.1 as this is available with a standard developer license.
 
 ### NOTE on Hardware
 
@@ -41,11 +43,13 @@ you should be able to connect to the databases using vagrant ssh and su - oracle
 - Service `PDB` for pluggable database
 - Service `UPGR` for Oracle11g database
 
-There is an OracleVagrantFAQ.pdf on handling the databases, upgrading, monitoring, testing etc.
+## First & Further Steps
+
+There is an [FAQ](FAQ.md) on handling the databases, upgrading, monitoring, testing etc.
 
 ## Links
 
-We gratefully considered the following links
+We are all [standing on the shoulders of giants](http://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants), so we want to say thanks for the following online resources
 
 - [dbehnke/oracle12c-vagrant (GitHub)](https://github.com/dbehnke/oracle12c-vagrant)
 - [Starting From Windows with Linux VM as Docker Host (AMIS Technology Blog)](https://technology.amis.nl/2015/03/15/docker-take-two-starting-from-windows-with-linux-vm-as-docker-host/)
