@@ -36,7 +36,34 @@ In your working directory there is a **Vagrantfile** with a line
 
 This refers to this script
 
-![setup](/home/oracle/Pictures/oel71Setup.png  "setup.sh")
+	
+	# preinstall
+	/vagrant/scripts/preinstall.sh
+	if [[ $? != "0" ]]; then echo "ERROR in preinstall.sh - aborting setup"; exit; fi
+	
+	# Oracle12 install
+	/vagrant/scripts/oracle12c-install.sh
+	if [[ $? != "0" ]]; then echo "ERROR in oracle12c-install.sh - aborting setup"; exit; fi
+	
+	# create Oracle12c Containerdatabase + pluggable database
+	/vagrant/scripts/create12cdb.sh
+	if [[ $? != "0" ]]; then echo "ERROR in create12cdb.sh - aborting setup"; exit; fi
+	
+	
+	# Oracle11g install
+	/vagrant/scripts/oracle11g-install.sh
+	if [[ $? != "0" ]]; then echo "ERROR in oracle11g-install.sh - aborting setup"; exit; fi
+	
+	# create Oracle11g database
+	/vagrant/scripts/create11gdb.sh
+	if [[ $? != "0" ]]; then echo "ERROR in create11gdb.sh - aborting setup"; exit; fi
+	
+	# postinstall
+	/vagrant/scripts/postinstall.sh
+	if [[ $? != "0" ]]; then echo "ERROR in postinstall.sh - aborting setup"; exit; fi
+
+
+
 
 By commenting / uncommenting the steps you may run a controled setup. The first time **Vagrant** runs the so called **provision**.  Next time you must say **vagrant provision.
 Setting up step by step my be a good experience.
@@ -45,7 +72,7 @@ Setting up step by step my be a good experience.
 
 Of course - you may take a snapshot eg. after the preinstall to experiment with different installaltion scripts.  The you should say **vagrant snapshot take Initial**
 
-![initalsnap](/home/oracle/Pictures/oel71Snapshots.png  "Inital snapshot")
+
 
 
 
