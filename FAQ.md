@@ -257,7 +257,7 @@ If you execute it in the `CDB1` database you see  this listing
 
 	SYS@CDB1>@registry.sql
 	
-	COMP_NAME				  STATUS     VERSION	 MODIFIED
+		COMP_NAME				  STATUS     VERSION	 MODIFIED
 		----------------------------------------- ---------- ----------- --------------------
 		Oracle Database Vault			  VALID      12.1.0.2.0  26-APR-2015 07:39:24
 		Oracle Application Express		  VALID      4.2.5.00.08 26-APR-2015 07:39:24
@@ -353,7 +353,7 @@ The subdirectory /vagrant/develop belongs to the user vagrant. That is your prob
 	-rwx------ 1 oracle oinstall   3651 23. Okt 2014  smonitor.ksh
 	[oracle@localhost develop]$ 
 
-Here is one of my scripts, developed during 15 years working as Oracle DBA. It would surpass this handout to demonstrate this tool. There will be a github - project for the further development of this framework of profi DBA - scripts.
+Here is one of my scripts, developed during 15 years working as Oracle DBA. It would surpass this handout to demonstrate this tool. There will be a github - project for the further development of this framework for profi DBA - scripts.
 
 Writing one's own DBA – scripts can be trained in special workshops e.g. on 
 

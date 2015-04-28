@@ -56,3 +56,7 @@ We are all [standing on the shoulders of giants](http://en.wikipedia.org/wiki/St
 - [rhopman/docker-oracle-12c (GitHub)](https://github.com/rhopman/docker-oracle-12c)
 - [wscherphof/oracle-12c (GitHub)](https://github.com/wscherphof/oracle-12c)
 - [phusion/open-vagrant-boxes (GitHub)](https://github.com/phusion/open-vagrant-boxes)
+
+A special thanks to the **Oracle Upgrade Team** for it's very good **Upgrade_HOL** on [OracleUpgrade](http://www.oracle.com/technetwork/community/developer-vm/index.html) 
+
+
