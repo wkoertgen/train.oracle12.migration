@@ -363,7 +363,7 @@ Writing one's own DBA – scripts can be trained in special workshops e.g. on
  
 In any case it would be a good idea to take a snapshot before you begin to work with the databases. 
 
-## 15. Is it possible to use tools like SqlDeveloper on EM ?
+## 15. Is it possible to use tools like SqlDeveloper and EM ?
 One of Vagrant's features is Port Forwarding. On the host you start the SqlDeveloper and open a connection to the databases in the guest VM.
 
 You can make use of the Port Forwarding, too, with EM, but I would not recommend to use the gigantic EM Cloudcontrol, but rather the smaller standalone EM Express. You must choose appriopate httpsports for the VM databases and forthward them to the host.
