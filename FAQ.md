@@ -7,10 +7,13 @@ http://www.oracle.com/technetwork/community/developer-vm/index.html
 
 I was inspired by the idea of training **Installing and Upgrading** in a VirtualBox. This is what I missed all the time working as DBA.
 
-But  working with that Virtualbox I saw the technical limitations, eg. tiny fontsize, slow mouse pointer because of the mouse capture, difficult mounting of shared folders, the integrated SqlDeveloper unreadable with it's very tiny fontsizes and slower as usually, etc.
+But  working with that Virtualbox, I saw the technical limitations, eg. tiny fontsize, slow mouse pointer because of the mouse capture, difficult mounting of shared folders, the integrated SqlDeveloper unreadable with it's very tiny fontsizes and slower as usually, etc.
 What brought me to write my own solution was finally the circumstance, that people could learn Upgrading, but not Installing.
 
-In this solution one can do both: study the **different installation scripts** of Oracle SW and creating databases and one can train **Upgrading**.
+In this solution you can do much more: 
+- study the **different installation scripts** of Oracle SW and creating databases 
+- **experiment on** the scripts and find your way of doing things
+- train the different methods of **Upgrading**.
 
 Additionally you may explore and take exercises on whatever you want, eg. compare the different **Optimizers**, which is crucial for Migrations.
 
@@ -19,19 +22,23 @@ Or you may  explore the exciting **In-Memory Database** und compare the result w
 There are many **more benefits** using Vagrant, but this would take too long to put down here.
 
 ## 2. How long does the setup of this VirtualBox take ?
-When you have Vagrant and a compatible Guest Addition - see the **README.md** - the setup is started wiht the command **vagrant up** and will finish in an hour, provided that you have a modern machine with 2 CPUs and enough memory.
+When you have Vagrant and a compatible Guest Addition - see the **README** - the setup is started by the command **vagrant up** and will finish in 40 - 45 minutes, provided that you have a modern machine with 2 CPUs and enough memory.
+
+Once the setup is done, the next `vagrant up` takes less than a minute. You may even work offline. Stop the engine by `vagrant halt`. 
+
+By the way, there is a complete help system: `vagrant -h`
 
 ## 3. Can there be problems with the setup ?
-The only problem I have experienced were the missing zip-files in the expected place - see the **README.md**
+The only problem I have experienced were the missing zip-files in the expected place - see the **README**. You can download these files from the indicated links.
 
-You can download these files from the indicated Oraclepages when you have a Developer License, which comes with a free Oracle Account.
+You should have / create a free Oracle account to get a **Developer License**. Please read the text of the license. 
 
-## 4. How can i control the setup process?
+## 4. How can I control the setup process?
 In the `Vagrantfile` there is a line 
 
 	config.vm.provision "shell", path: "scripts/setup.sh"
 
-which refers to this script. You can control the process by uncommenting / commenting the scripts
+which refers to this script. You can control the process by uncommenting / commenting the lines of your choice.
 	
 	# setup.sh controls the process of 
 	# preinstall 
@@ -42,25 +49,27 @@ which refers to this script. You can control the process by uncommenting / comme
 	
 	# preinstall 
 	#/vagrant/scripts/preinstall.sh 
-	#if [[ $0 != .0. ]]; then echo "ERROR in preinstall.sh - aborting setup.; exit; fi 
+	#if [[ "$?" != "0" ]]; then echo "ERROR in preinstall.sh - aborting setup.; exit; fi 
 	
 	# Oraclel2 install 
 	#/vagrant/scripts/oraclel2c-install.sh 
-	#if [[ $? != .0. ]]; then echo "ERROR in oraclel2c-install.sh - aborting setup.; exit; fi 
+	#if [[ "$?" != "0" ]]; then echo "ERROR in oraclel2c-install.sh - aborting setup.; exit; fi 
 	
 	# create Oraclel2c Containerdatabase + pluggable database 
 	#/vagrant/scripts/createl2cdb. sh 
-	#if [[ $? != .0. ]]; then echo "ERROR in createl2cdb.sh - aborting setup.; exit; fi 
+	#if [[ "$?" != "0" ]]; then echo "ERRORincreatel2cdb.sh - aborting setup.; exit; fi 
 	
 	# Oraclellg install 
-	#/vagrant/scripts/oraclellg-install.sh #if [[ $0 != .0. ]]; then echo "ERROR in oraclellg-install.sh - aborting setup.; exit; fi 
+	#/vagrant/scripts/oraclellg-install.sh 
+	#if [[ "$0" != "0" ]]; then echo "ERROR in oraclellg-install.sh - aborting setup.; exit; fi 
 	
 	# create Oraclellg database 
 	#/vagrant/scripts/createllgdb. sh 
-	#if [[ $0 != .0. ]]; then echo "ERROR in createllgdb.sh - aborting setup.; exit; fi 
+	#if [[ "$?" != "0" ]]; then echo "ERROR in createllgdb.sh - aborting setup.; exit; fi 
 	
-	# postinstall /vagrant/scripts/postinstall.sh 
-	#if [[ $0 != .0. ]]; then echo "ERROR in postinstall.sh - aborting setup.; exit; fi 
+	# postinstall 
+	#/vagrant/scripts/postinstall.sh 
+	#if [[ "$?" != "0" ]]; then echo "ERROR in postinstall.sh - aborting setup.; exit; fi 
 
 ## 5. Is Vagrant able to take snapshots?
 Using snapshots with virtualization can be a huge time saver. If you use vagrant with VirtualBox you can install the snapshot plugin [vagrant-vbox-snapshot](https://github.com/dergachev/vagrant-vbox-snapshot) via
@@ -100,10 +109,10 @@ When you want to start the next step, just enter
 	vagrant provision.
 
 ## 5. Which shared folders do exist? 
-In the work directory where you execute `vagrant up`, there are 2 directories `./logs` and `./scripts`. The provisioning scripts log into `./logs`. In the `./develop` you may store your own SQL-scripts.
-Connect to the guest VM, go to your vagrant-root directory /vagrant and walk around.
+In the work directory where you execute `vagrant up`, there are 2 directories `./logs` and `./scripts`. The provisioning scripts log into `./logs`. In the `./develop` you may store your own SQL-scripts. For **details see topic 14**.
 
-## 6. What should i do for entering the VM?
+
+## 6. How do I connect to the guest VM ?
 To connect to the guest VM type
 
 	vagrant ssh
@@ -114,6 +123,7 @@ which will log you in as superuser vagrant. You are bound to work as user `oracl
 
 which prompts you for the password.
 
+## 7. Best practice to get started ?
 Usually the first step on an unknown oracle machine is 
 
 	cat /etc/oratab.  
@@ -130,9 +140,9 @@ Both provide practical aliases as
  
 Feel free to add your own shortcuts.
 
-**NOTE:** I have installed the Oracle11g patchlevel 11.2.0.1 which is known as buggy. It was cumbersome to install. Latest patch of this release was Oracle11g 11.2.0.7, which unfortunately is not available for owners of a standard developer license. As we aim to this target group we decided to install the early 11.2.0.1 version.
+**NOTE:** We have installed the Oracle11g patchlevel 11.2.0.1 which is known as buggy. Latest patch of this release was Oracle11g 11.2.0.7, which unfortunately is not available for people with the standard Developer License. As we aim to this target group, we decided to install the early 11.2.0.1 version.
 
-## 4. How can I see which database is running?
+## 8. How can I see which database is running?
 
 	[oracle@localhost ~]$ ps -ef | grep pmon | grep -v grep
 	oracle    2884     1  0 10:03 ?        00:00:00 ora_pmon_CDB1
@@ -148,7 +158,7 @@ To see, which listeners are running do
 	[oracle@localhost ~]$ 
 
 
-## 5. How can I handle the listener(s)?
+## 9. How can I handle the listener(s)?
 
 One ORACLE_HOME/bin must be in the PATH. Best do `. cdb1` and type
 
@@ -194,7 +204,7 @@ The help shows you the most common commands e.g.
 
 
 	
-## 6. How can I handle TNS problems? 
+## 10. How can I handle TNS problems? 
 I have placed the listener.ora and the tnsnames.ora in $TNS_ADMIN (/var/opt/oracle). 
 Even if the tnsping utility shows a database, it does not mean that you can reach the database via then TNS framework. 
 
@@ -229,9 +239,9 @@ Experienced DBAs do this
 
 Correct the syntax error and the you can connect via then TNS.
 
-There are a some common pitfalls in the TNS configuration. Oracle's Online Documentation is very good but sometimes hard to study, but it is worth the effort.
+There are a some common pitfalls in the TNS configuration. Oracle's Online Documentation is very good, often hard to study, but it is worth the effort. Besides, there are meanwhile many very good special sites, blogs etc.
 
-## 7. How can I see the options of a database?
+## 11. How can I see the options of a database?
 It is crucial to know the options of a database, because it decides what I can do with it. Besides, in production, it is a matter of license fees. Write a little script, e.g. `registry.sql`
 	
 	set lines 120 pages 66
@@ -283,7 +293,7 @@ Here I decided to limit the options to the minimum, because we need this databas
 
 The `CDB1` was created using `dbca` in silent mode. Study the scripts [scripts/create12cdb.sh](scripts/create12cdb.sh). For newcomers all scripts in the subdirectory `./scripts` are a complete workshop on installing.
 
-## 8. Shutdown databases
+## 12. Startup / Shutdown databases
 For new-comers only: there are different ways of shutting down and starting up, especially in Oracle12c Container Databases. This would be part of on extra workshop. For now see
 
 	SYS@UPGR>shutdown immediate
@@ -303,10 +313,10 @@ For new-comers only: there are different ways of shutting down and starting up, 
 	
 
 
-## 9. What has Vagrant to do with VirtualBox?
+## 13. What has Vagrant to do with VirtualBox?
 See some good books, e.g. [Vagrant Up and Runnin](http://chimera.labs.oreilly.com/books/1234000001668/) by Mitchell Hashimoto, the author of Vagrant. 
 
-## 10. As user oracle I cannot execute scripts stored in the shared folders. 
+## 14. As user oracle I cannot execute scripts stored in the shared folders. 
 As user `vagrant` you have no problem, because the shared folder `/vagrant` is owned by user `vagrant`. If you want full compliance of your scripts eg. in the folder `/vagrant/develop` you could do the following:
 
 In `Vagrantfile` uncomment the line 
@@ -345,7 +355,7 @@ The subdirectory /vagrant/develop belongs to the user vagrant. That is your prob
 
 Here is one of my scripts, developed during 15 years working as Oracle DBA. It would surpass this handout to demonstrate this tool. There will be a github - project for the further development of this framework of profi DBA - scripts.
 
-Writing one's own DBA – scripts can be taught in a special workshop e.g. on 
+Writing one's own DBA – scripts can be trained in special workshops e.g. on 
 
 - Performance Tuning or 
 - New Features in PL/SQL or 
