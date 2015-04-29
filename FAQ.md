@@ -328,14 +328,14 @@ compare it with the output in `UPGR`:
 
 and note the new features of Oracle12c `Advanced Index Compression` and the new column `CON_ID` in every view. `CON_ID = 0` means `Container ID of the `CDB$ROOT`.
 
-There are roundabout 500 new features. You cannot learn all this in a single workshop or a single book. We could show some basics and special advanced features in special workshops.
+There are roundabout 500 new features. You cannot learn all this in a single workshop or a single book. 
 
 
 
 
 
 ## 13. Startup / Shutdown databases
-For new-comers only: there are different ways of shutting down and starting up, especially in Oracle12c Container Databases. This would be part of on extra workshop. For now see
+For new-comers only: there are different ways of shutting down and starting up, especially in Oracle12c Container Databases. Find details in Oracle Documentation. For now see
 
 	SYS@UPGR>shutdown immediate
 	Database closed.
@@ -412,7 +412,7 @@ You can make use of the Port Forwarding, too, with EM, but I would not recommend
 Monitoring does not make much sense on an idle database, you will need a sort of **stresstest**
 or **generate workload**. Every DBA has hopefully his own sripts for this. 
 
-All this is quite tricky. We could show it in a special workshop on Monitoring.
+All this is quite tricky. Find some special workshop on Monitoring.
 
 
 
