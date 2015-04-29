@@ -241,7 +241,7 @@ Correct the syntax error and the you can connect via then TNS.
 
 There are a some common pitfalls in the TNS configuration. Oracle's Online Documentation is very good, often hard to study, but it is worth the effort. Besides, there are meanwhile many very good special sites, blogs etc.
 
-## 11. How can I see the options of a database?
+## 11a. How can I see the options of a database?
 It is crucial to know the options of a database, because it decides what I can do with it. Besides, in production, it is a matter of license fees. Write a little script, e.g. `registry.sql`
 	
 	set lines 120 pages 66
@@ -292,6 +292,47 @@ See the difference, if you run it in the `UPGR` database:
 Here I decided to limit the options to the minimum, because we need this database only for educational purposes, i.e. for training the different methods of upgrading a database to Oracle12c. Study the scripts [scripts/create11gdb.sh](scripts/create11gdb.sh) and [scripts/create11gdb.sql](scripts/create11gdb.sql) to see the old manual way of creating a database. 
 
 The `CDB1` was created using `dbca` in silent mode. Study the scripts [scripts/create12cdb.sh](scripts/create12cdb.sh). For newcomers all scripts in the subdirectory `./scripts` are a complete workshop on installing.
+
+## 11b. Components and Options
+I have used the term *options* quite deliberatelly for the *registered components* of a database. Do not mix up  **dba_registry** with the more detailed **v$option** as `Compression`, `Block Change Tracking`, `Automatic Storage Management`, `Spatial`, etc. It bis a bit confusing. In Oracle11.2 there are 65 options, in Oracle12c R1 there are 86.
+
+Write a little script, eg. `options.sql`
+
+	set pages 66
+	set verify off
+	set echo on
+	col parameter for a40
+	col value for a8
+	select * from v$option where parameter like '%&1%';
+	
+and call it in the database `CDB1` like this:
+
+	SYS@CDB1>@options Compress
+	
+	PARAMETER				 VALUE	      CON_ID
+	---------------------------------------- -------- ----------
+	Basic Compression			 TRUE		   0
+	Unused Block Compression		 TRUE		   0
+	Advanced Compression			 TRUE		   0
+	`		 TRUE		   0
+	
+compare it with the output in `UPGR`:
+
+	SYS@UPGR>@options Compress
+	
+	PARAMETER				 VALUE
+	---------------------------------------- --------
+	Basic Compression			 TRUE
+	Unused Block Compression		 TRUE
+	Advanced Compression			 TRUE
+
+and note the new features of Oracle12c `Advanced Index Compression` and the new column `CON_ID` in every view. `CON_ID = 0` means `Container ID of the `CDB$ROOT`.
+
+There are roundabout 500 new features. You cannot learn all this in a single workshop or a single book. 
+
+
+
+
 
 ## 12. Startup / Shutdown databases
 For new-comers only: there are different ways of shutting down and starting up, especially in Oracle12c Container Databases. This would be part of on extra workshop. For now see
@@ -368,11 +409,15 @@ One of Vagrant's features is Port Forwarding. On the host you start the SqlDevel
 
 You can make use of the Port Forwarding, too, with EM, but I would not recommend to use the gigantic EM Cloudcontrol, but rather the smaller standalone EM Express. You must choose appriopate httpsports for the VM databases and forthward them to the host.
 
-It is quite tricky. We could show that in a special workshop on Monitoring.
+Monitoring does not make much sense on an idle database, you will need a sort of **stresstest**
+or **generate workload**. Every DBA has hopefully his own sripts for this. 
+
+All this is quite tricky. We could show it in a special workshop on Monitoring.
 
 
 
 ***
 
 
-If there are questions, contact [me](mailto:it@koertgen.de) or [my son](mailto:marcel.koertgen@gmail.com).
+## If there are questions
+ contact [me](mailto:it@koertgen.de) or [my son](mailto:marcel.koertgen@gmail.com).
