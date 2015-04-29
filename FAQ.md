@@ -314,7 +314,7 @@ and call it in the database `CDB1` like this:
 	Basic Compression			 TRUE		   0
 	Unused Block Compression		 TRUE		   0
 	Advanced Compression			 TRUE		   0
-	`		 TRUE		   0
+	`Advanced Index Compression`		 TRUE		   0
 	
 compare it with the output in `UPGR`:
 
