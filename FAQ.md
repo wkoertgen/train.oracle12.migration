@@ -108,11 +108,11 @@ When you want to start the next step, just enter
 
 	vagrant provision.
 
-## 5. Which shared folders do exist? 
+## 6. Which shared folders do exist? 
 In the work directory where you execute `vagrant up`, there are 2 directories `./logs` and `./scripts`. The provisioning scripts log into `./logs`. In the `./develop` you may store your own SQL-scripts. For **details see topic 14**.
 
 
-## 6. How do I connect to the guest VM ?
+## 7. How do I connect to the guest VM ?
 To connect to the guest VM type
 
 	vagrant ssh
@@ -123,7 +123,7 @@ which will log you in as superuser vagrant. You are bound to work as user `oracl
 
 which prompts you for the password.
 
-## 7. Best practice to get started ?
+## 8. Best practice to get started ?
 Usually the first step on an unknown oracle machine is 
 
 	cat /etc/oratab.  
@@ -142,7 +142,7 @@ Feel free to add your own shortcuts.
 
 **NOTE:** We have installed the Oracle11g patchlevel 11.2.0.1 which is known as buggy. Latest patch of this release was Oracle11g 11.2.0.7, which unfortunately is not available for people with the standard Developer License. As we aim to this target group, we decided to install the early 11.2.0.1 version.
 
-## 8. How can I see which database is running?
+## 9. How can I see which database is running?
 
 	[oracle@localhost ~]$ ps -ef | grep pmon | grep -v grep
 	oracle    2884     1  0 10:03 ?        00:00:00 ora_pmon_CDB1
@@ -158,7 +158,7 @@ To see, which listeners are running do
 	[oracle@localhost ~]$ 
 
 
-## 9. How can I handle the listener(s)?
+## 10. How can I handle the listener(s)?
 
 One ORACLE_HOME/bin must be in the PATH. Best do `. cdb1` and type
 
@@ -204,7 +204,7 @@ The help shows you the most common commands e.g.
 
 
 	
-## 10. How can I handle TNS problems? 
+## 11. How can I handle TNS problems? 
 I have placed the listener.ora and the tnsnames.ora in $TNS_ADMIN (/var/opt/oracle). 
 Even if the tnsping utility shows a database, it does not mean that you can reach the database via then TNS framework. 
 
@@ -241,7 +241,7 @@ Correct the syntax error and the you can connect via then TNS.
 
 There are a some common pitfalls in the TNS configuration. Oracle's Online Documentation is very good, often hard to study, but it is worth the effort. Besides, there are meanwhile many very good special sites, blogs etc.
 
-## 11a. How can I see the options of a database?
+## 12a. How can I see the options of a database?
 It is crucial to know the options of a database, because it decides what I can do with it. Besides, in production, it is a matter of license fees. Write a little script, e.g. `registry.sql`
 	
 	set lines 120 pages 66
@@ -293,7 +293,7 @@ Here I decided to limit the options to the minimum, because we need this databas
 
 The `CDB1` was created using `dbca` in silent mode. Study the scripts [scripts/create12cdb.sh](scripts/create12cdb.sh). For newcomers all scripts in the subdirectory `./scripts` are a complete workshop on installing.
 
-## 11b. Components and Options
+## 12b. Components and Options
 I have used the term *options* quite deliberatelly for the *registered components* of a database. Do not mix up  **dba_registry** with the more detailed **v$option** as `Compression`, `Block Change Tracking`, `Automatic Storage Management`, `Spatial`, etc. It bis a bit confusing. In Oracle11.2 there are 65 options, in Oracle12c R1 there are 86.
 
 Write a little script, eg. `options.sql`
@@ -328,13 +328,13 @@ compare it with the output in `UPGR`:
 
 and note the new features of Oracle12c `Advanced Index Compression` and the new column `CON_ID` in every view. `CON_ID = 0` means `Container ID of the `CDB$ROOT`.
 
-There are roundabout 500 new features. You cannot learn all this in a single workshop or a single book. 
+There are roundabout 500 new features. You cannot learn all this in a single workshop or a single book. We could show some basics and special advanced features in special workshops.
 
 
 
 
 
-## 12. Startup / Shutdown databases
+## 13. Startup / Shutdown databases
 For new-comers only: there are different ways of shutting down and starting up, especially in Oracle12c Container Databases. This would be part of on extra workshop. For now see
 
 	SYS@UPGR>shutdown immediate
@@ -354,10 +354,10 @@ For new-comers only: there are different ways of shutting down and starting up, 
 	
 
 
-## 13. What has Vagrant to do with VirtualBox?
+## 14. What has Vagrant to do with VirtualBox?
 See some good books, e.g. [Vagrant Up and Runnin](http://chimera.labs.oreilly.com/books/1234000001668/) by Mitchell Hashimoto, the author of Vagrant. 
 
-## 14. As user oracle I cannot execute scripts stored in the shared folders. 
+## 15. As user oracle I cannot execute scripts stored in the shared folders. 
 As user `vagrant` you have no problem, because the shared folder `/vagrant` is owned by user `vagrant`. If you want full compliance of your scripts eg. in the folder `/vagrant/develop` you could do the following:
 
 In `Vagrantfile` uncomment the line 
@@ -404,7 +404,7 @@ Writing one's own DBA – scripts can be trained in special workshops e.g. on
  
 In any case it would be a good idea to take a snapshot before you begin to work with the databases. 
 
-## 15. Is it possible to use tools like SqlDeveloper and EM ?
+## 16. Is it possible to use tools like SqlDeveloper and EM ?
 One of Vagrant's features is Port Forwarding. On the host you start the SqlDeveloper and open a connection to the databases in the guest VM.
 
 You can make use of the Port Forwarding, too, with EM, but I would not recommend to use the gigantic EM Cloudcontrol, but rather the smaller standalone EM Express. You must choose appriopate httpsports for the VM databases and forthward them to the host.
