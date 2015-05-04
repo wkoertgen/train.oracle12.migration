@@ -15,7 +15,7 @@ export PATH
 export TMP=/tmp
 export TMPDIR=$TMP
 
-export ORACLE_HOSTNAME=oracle12c.localdomain
+export ORACLE_HOSTNAME=oracle12c
 export ORACLE_UNQNAME=CDB1
 export ORACLE_BASE=/u01/app/oracle
 export ORACLE_HOME=$ORACLE_BASE/product/12.1.0

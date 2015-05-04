@@ -7,7 +7,7 @@ echo Logfile is $LOGFILE
 echo "wait for Oracle11g installation to finish  ..."
 
 
-export ORACLE_HOSTNAME=oracle12c.localdomain
+export ORACLE_HOSTNAME=oracle12c
 export ORACLE_UNQNAME=UPGR
 export ORACLE_BASE=/u01/app/oracle
 export ORACLE_HOME=$ORACLE_BASE/product/11.2.0

@@ -15,7 +15,7 @@ open_cursors=300
 ###########################################
 # Database Identification
 ###########################################
-db_domain=localhost.localdomain
+db_domain=''
 db_name="UPGR"
  
 ###########################################

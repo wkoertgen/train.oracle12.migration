@@ -1,11 +1,11 @@
 # FAQ on Oracle12 / Oracle11 on Vagrant
 
 ## 1. What is the difference between your solution and Oracle's solution  ?
-The Oracle Upgrade Team did a great job, especially the Hand-on-Labs is marvelous.
+The Oracle Upgrade Team did a great job, especially the Hand-on-Labs is excellent.
 
 http://www.oracle.com/technetwork/community/developer-vm/index.html
 
-I was inspired by the idea of training **Installing and Upgrading** in a VirtualBox. This is what I missed all the time working as DBA.
+I was inspired by the idea of training **Installing and Upgrading** in a VirtualBox. Such things is,  what I missed all the time working as DBA.
 
 But  working with that Virtualbox, I saw the technical limitations, eg. tiny fontsize, slow mouse pointer because of the mouse capture, difficult mounting of shared folders, the integrated SqlDeveloper unreadable with it's very tiny fontsizes and slower as usually, etc.
 What brought me to write my own solution was finally the circumstance, that people could learn Upgrading, but not Installing.
@@ -38,7 +38,7 @@ In the `Vagrantfile` there is a line
 
 	config.vm.provision "shell", path: "scripts/setup.sh"
 
-which refers to this script. You can control the process by uncommenting / commenting the lines of your choice.
+which refers to the script below. You can control the process by uncommenting / commenting the lines of your choice.
 	
 	# setup.sh controls the process of 
 	# preinstall 
@@ -69,8 +69,10 @@ which refers to this script. You can control the process by uncommenting / comme
 	
 	# postinstall 
 	#/vagrant/scripts/postinstall.sh 
-	#if [[ "$?" != "0" ]]; then echo "ERROR in postinstall.sh - aborting setup.; exit; fi 
+	#if [[ "$?" != "0" ]]; then echo "ERROR in postinstall.sh - aborting setup.; exit; fi  
 
+**Note:** I have commented all lines for demonstration only.
+ 
 ## 5. Is Vagrant able to take snapshots?
 Using snapshots with virtualization can be a huge time saver. If you use vagrant with VirtualBox you can install the snapshot plugin [vagrant-vbox-snapshot](https://github.com/dergachev/vagrant-vbox-snapshot) via
 
@@ -109,7 +111,7 @@ When you want to start the next step, just enter
 	vagrant provision.
 
 ## 6. Which shared folders do exist? 
-In the work directory where you execute `vagrant up`, there are 2 directories `./logs` and `./scripts`. The provisioning scripts log into `./logs`. In the `./develop` you may store your own SQL-scripts. For **details see topic 14**.
+In the work directory where you execute `vagrant up`, there are 2 directories `./logs` and `./scripts`. The provisioning scripts log into `./logs`. In the `./develop` you may store your own SQL-scripts. For **details see topic 15**.
 
 
 ## 7. How do I connect to the guest VM ?
@@ -140,7 +142,7 @@ Both provide practical aliases as
  
 Feel free to add your own shortcuts.
 
-**NOTE:** We have installed the Oracle11g patchlevel 11.2.0.1 which is known as buggy. Latest patch of this release was Oracle11g 11.2.0.7, which unfortunately is not available for people with the standard Developer License. As we aim to this target group, we decided to install the early 11.2.0.1 version.
+**NOTE:** We have installed the Oracle11g patchlevel 11.2.0.1 which is known as buggy. Later patches of this Oracle11g up to 11.2.0.7, are unfortunately not available for people with the standard Developer License. As we aim to this target group, we decided to install the early 11.2.0.1 version.
 
 ## 9. How can I see which database is running?
 
@@ -330,10 +332,6 @@ and note the new features of Oracle12c `Advanced Index Compression` and the new 
 
 There are roundabout 500 new features. You cannot learn all this in a single workshop or a single book. 
 
-
-
-
-
 ## 13. Startup / Shutdown databases
 For new-comers only: there are different ways of shutting down and starting up, especially in Oracle12c Container Databases. Find details in Oracle Documentation. For now see
 
@@ -407,7 +405,9 @@ In any case it would be a good idea to take a snapshot before you begin to work 
 ## 16. Is it possible to use tools like SqlDeveloper and EM ?
 One of Vagrant's features is Port Forwarding. On the host you start the SqlDeveloper and open a connection to the databases in the guest VM.
 
-You can make use of the Port Forwarding, too, with EM, but I would not recommend to use the gigantic EM Cloudcontrol, but rather the smaller standalone EM Express. You must choose appriopate httpsports for the VM databases and forthward them to the host.
+You can make use of the Port Forwarding, too, with EM, but I would not recommend to use the gigantic EM Cloudcontrol, but rather the smaller standalone EM Express. You must choose appriopate httpsports for the VM databases and forward them to the host.
+
+If there are problems, you will find short tutorials on [wkoertgen.blogspot.de](http://wkoertgen.blogspot.de) 
 
 Monitoring does not make much sense on an idle database, you will need a sort of **stresstest**
 or **generate workload**. Every DBA has hopefully his own sripts for this. 
@@ -419,5 +419,5 @@ All this is quite tricky. Find some special workshop on Monitoring.
 ***
 
 
-## If there are questions
+## For questions or feedback 
  contact [me](mailto:it@koertgen.de) or [my son](mailto:marcel.koertgen@gmail.com).

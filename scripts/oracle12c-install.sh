@@ -5,16 +5,13 @@ echo Oracle12c installation in progress $(date) | tee $LOGFILE
 echo Logfile is $LOGFILE
 echo "wait for Oracle12c installation to finish ..."
 
-export ORACLE_HOSTNAME=oracle12c.localdomain
+export ORACLE_HOSTNAME=oracle12c
 export ORACLE_UNQNAME=CDB1
 export ORACLE_BASE=/u01/app/oracle
 export ORACLE_HOME=$ORACLE_BASE/product/12.1.0
 export ORACLE_SID=CDB1
 
-sudo hostname -b oracle12c.localdomain 
-
 cd /vagrant/12c_installer
-
 unzip linuxamd64_12102_database_1of2.zip >> $LOGFILE 2>&1
 unzip linuxamd64_12102_database_2of2.zip  >> $LOGFILE 2>&1
 

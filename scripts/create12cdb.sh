@@ -6,7 +6,7 @@ echo database CDB1 creation in progress $(date) | tee $LOGFILE
 echo Logfile is $LOGFILE
 echo "wait for database creation to finish ..."
 
-export ORACLE_HOSTNAME=oracle12c.localdomain
+export ORACLE_HOSTNAME=oracle12c
 export ORACLE_BASE=/u01/app/oracle
 export ORACLE_HOME=$ORACLE_BASE/product/12.1.0
 
