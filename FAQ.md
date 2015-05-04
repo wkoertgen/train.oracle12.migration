@@ -33,7 +33,7 @@ The only problem I have experienced were the missing zip-files in the expected p
 
 You should have / create a free Oracle account to get a **Developer License**. Please read the text of the license. 
 
-## 4. How can I control the setup process?
+## 4a. How can I control the setup process?
 In the `Vagrantfile` there is a line 
 
 	config.vm.provision "shell", path: "scripts/setup.sh"
@@ -72,6 +72,16 @@ which refers to the script below. You can control the process by uncommenting / 
 	#if [[ "$?" != "0" ]]; then echo "ERROR in postinstall.sh - aborting setup.; exit; fi  
 
 **Note:** I have commented all lines for demonstration only.
+
+## 4b. I do not see the logfiles completely. Why is that so ? 
+Some people have complained, that logfiles grow up to 20 MB. Hence we directed the logging of the **create11gdb.sql** to /dev/null. 
+If you would like the follow the output for educational purposes, you may  change 2 lines in **create11gdb.sh**
+
+`#sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/create11gdb.sql >> $LOGFILE`
+`sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/create11gdb.sql /dev/null`
+
+The other logfile from **oracle11g-install** is directed  to `/u01/app/oraInventory/logs` inside the guest VM by the **runInstaller** of Oracle11g itself. This installer has no feature like `show_progress` as we have it in Oracle12c. You mail follow the process by `tail -f <logfile>`.
+
  
 ## 5. Is Vagrant able to take snapshots?
 Using snapshots with virtualization can be a huge time saver. If you use vagrant with VirtualBox you can install the snapshot plugin [vagrant-vbox-snapshot](https://github.com/dergachev/vagrant-vbox-snapshot) via
