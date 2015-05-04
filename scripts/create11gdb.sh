@@ -3,6 +3,8 @@ LOGFILE=/vagrant/logs/create11gdb_$RUNTIME.log
 
 echo Database UPGR creation in progress $(date) | tee $LOGFILE
 echo Logfile is $LOGFILE
+echo "This part generates a logfile of 20MB. We decided to lead it to /dev/null"
+echo "Read the FAQ to know how to change this"
 echo "wait for database creation to finish ..."
 
 ORACLE_BASE=/u01/app/oracle
@@ -22,7 +24,8 @@ sudo chown oracle:oinstall $ORACLE_HOME/dbs/initUPGR.ora
 sudo chmod 644 $ORACLE_HOME/dbs/initUPGR.ora
 sudo cp /vagrant/env/glogin.sql $ORACLE_HOME/sqlplus/admin/glogin.sql
 
-sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/create11gdb.sql >> $LOGFILE
+#sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/create11gdb.sql >> $LOGFILE
+sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/create11gdb.sql /dev/null
 if [[ "$?" != "0" ]]; then exit 1; fi
 
 echo Database UPGR creation finished $(date) | tee -a $LOGFILE
