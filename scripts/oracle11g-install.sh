@@ -35,7 +35,7 @@ fi
 cd
 
 #clean up database_installer directory
-rm -r -f /vagrant/11g_installer/database
+rm -r -f /vagrant/11g_installer/database > /dev/null
 
 #run the root scripts
 
