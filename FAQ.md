@@ -78,6 +78,7 @@ Some people have complained, that logfiles grow up to 20 MB. Hence we directed t
 If you would like the follow the output for educational purposes, you may  change 2 lines in **create11gdb.sh**
 
 `#sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/create11gdb.sql >> $LOGFILE`
+
 `sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/create11gdb.sql /dev/null`
 
 The other logfile from **oracle11g-install** is directed  to `/u01/app/oraInventory/logs` inside the guest VM by the **runInstaller** of Oracle11g itself. This installer has no feature like `show_progress` as we have it in Oracle12c. You mail follow the process by `tail -f <logfile>`.
