@@ -4,6 +4,7 @@
 Vagrant.configure(2) do |config|
   # use oraclelinux 7.1 from vagrant cloud
   config.vm.box = "boxcutter/oel71"
+  config.vm.hostname = "oracle12c"
 
   # auto-update guest additions so we can ssh into the box
   #config.vbguest.auto_update = true
@@ -19,6 +20,7 @@ Vagrant.configure(2) do |config|
   
   # Oracle port forwarding
   config.vm.network "forwarded_port", guest: 1521, host: 11521
+  config.vm.network "forwarded_port", guest: 5500, host: 5510
 
   # run setup.sh
   config.vm.provision "shell", path: "scripts/setup.sh"
