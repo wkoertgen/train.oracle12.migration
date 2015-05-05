@@ -36,7 +36,7 @@ After running
 
     vagrant up
 
-you should be able to connect to the databases using vagrant ssh and su - oracle 
+you should be able to connect to the databases using `vagrant ssh` and `su - oracle` 
 
 - Default password for `root`, `oracle`, `sys` and `system` is `vagrant`
 - Service `CDB12` for Oracle12c container
