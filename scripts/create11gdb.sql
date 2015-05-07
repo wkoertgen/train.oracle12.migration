@@ -33,6 +33,9 @@ connect SYSTEM/vagrant
 @?/sqlplus/admin/help/hlpbld.sql helpus.sql;
 connect / as SYSDBA
 create spfile from pfile;
+CREATE SMALLFILE TABLESPACE "USERS"
+DATAFILE '/u01/app/oracle/oradata/UPGR/users01.dbf' SIZE 5M LOGGING
+EXTENT MANAGEMENT LOCAL SEGMENT SPACE MANAGEMENT AUTO;
 shutdown immediate;
 startup;
 exit

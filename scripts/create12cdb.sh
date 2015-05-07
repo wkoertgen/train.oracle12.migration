@@ -29,6 +29,9 @@ sudo -Eu oracle $ORACLE_HOME/bin/dbca -silent \
 -memoryPercentage 40 \
 -listeners LISTENER >> $LOGFILE 2>&1
 if [[ "$?" != "0" ]]; then exit 1; fi
+$ORACLE_HOME/bin sqlplus / as sysdba << EOT
+alter pluggable database pdb1 open;
+EOT
 
 sudo cp /vagrant/env/glogin.sql $ORACLE_HOME/sqlplus/admin/glogin.sql 
 echo database creation finished $(date) | tee -a $LOGFILE
