@@ -16,21 +16,22 @@ You should have installed
 - Download [Database Install files (1 and 2)](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-1959253.html)
     - `linuxamd64_12102_database_1of2.zip` (1.5G)
     - `linuxamd64_12102_database_2of2.zip` (967.5M)
-- Place the zip archives in `12c_installer/`
+- Place the zip archives in `./12c_installer/`
 
 ### Oracle 11gR2
 
 - Download [Database Install files (1 and 2)](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/112010-linx8664soft-100572.html)
     - `linux.x64_11gR2_database_1of2.zip`
     - `linux.x64_11gR2_database_2of2.zip`
+- Place the zip archives in ./11g_installer/
 
-**NOTE:** We opted for 11.2.0.1 as this is available with a standard developer license.
+**NOTE:** We opted for 11.2.0.1 as this is available with a standard developer license. Unfortunately there is no direct way to upgrade to Oracle12c. But this cannot deter us from learning to upgrade. See [FAQ](https://github.com/wkoertgen/train.oracle12.migration/FAQ.md) 
 
 ### NOTE on Hardware
 
 This virtualbox needs 4GB memory and 2 CPUs. We can scale down, but running 2 databases would result in really bad performance.
 
-## Connect to Database
+## Connect to the Databases
 
 After running
 
@@ -39,8 +40,8 @@ After running
 you should be able to connect to the databases using `vagrant ssh` and `su - oracle` 
 
 - Default password for `root`, `oracle`, `sys` and `system` is `vagrant`
-- Service `CDB12` for Oracle12c container
-- Service `PDB` for pluggable database
+- Service `CDB1` for Oracle12c container
+- Service `PDB1` for pluggable database
 - Service `UPGR` for Oracle11g database
 
 ## First & Further Steps

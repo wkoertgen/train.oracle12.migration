@@ -1,7 +1,10 @@
 # FAQ on Oracle12 / Oracle11 on Vagrant
 
 ## 1. What is the difference between your solution and Oracle's solution  ?
-The Oracle Upgrade Team did a great job, especially the Hand-on-Labs is excellent.
+
+Oracle's solution comes along with Oracle 11.2.0.4, which is not free for standard Developer License. Our solution aims to people who have no money or do not work in companies, able to afford a support identfier. Hence you cannot directly upgrade Oracle 11.2.0.1 to Oracle12c. Nevertheless we ar able to do our studies in upgrading. Additonal workarounds can be found on [wkoertgen.blogspot.de](http://wkoertgen.blogspot.de) 
+
+Nevertheless, Oracle's Upgrade Team did a great job, the Hand-on-Labs is excellent.
 
 http://www.oracle.com/technetwork/community/developer-vm/index.html
 
@@ -14,24 +17,29 @@ In this solution you can do much more:
 - study the **different installation scripts** of Oracle SW and creating databases 
 - **experiment on** the scripts and find your way of doing things
 - train the different methods of **Upgrading**.
-
+ 
 Additionally you may explore and take exercises on whatever you want, eg. compare the different **Optimizers**, which is crucial for Migrations.
 
 Or you may  explore the exciting **In-Memory Database** und compare the result with both Optimizers.
 
-There are many **more benefits** using Vagrant, but this would take too long to put down here.
+There are many **more benefits** using Vagrant, but it would take too long to put down here.
 
 ## 2. How long does the setup of this VirtualBox take ?
-When you have Vagrant and a compatible Guest Addition - see the **README** - the setup is started by the command **vagrant up** and will finish in 40 - 45 minutes, provided that you have a modern machine with 2 CPUs and enough memory.
+When you have the prerequistes installed - see the **README** - the setup is started by the command **vagrant up** and will finish in 40 - 45 minutes, provided that you have a modern machine with 2 CPUs and enough memory.
 
-Once the setup is done, the next `vagrant up` takes less than a minute. You may even work offline. Stop the engine by `vagrant halt`. 
-
+Once the setup is done, the next `vagrant up` takes less than a minute. You may even work offline. Stop the engine by `vagrant halt` 
+or `vagrant suspend`.
 By the way, there is a complete help system: `vagrant -h`
 
-## 3. Can there be problems with the setup ?
-The only problem I have experienced were the missing zip-files in the expected place - see the **README**. You can download these files from the indicated links.
+## 3a. Can there be problems with the setup ?
+The only problem I have experienced were the missing zip-files in the expected places - see the **README**. You can download these files from the indicated links.
 
 You should have / create a free Oracle account to get a **Developer License**. Please read the text of the license. 
+
+## 3b. Can I install Oracle11g 11.2.0.4 ?
+Yes, but you have to create an appropiate response file. As holder of an MOS account you are familiar with creating and modifying response files.
+Eventually you should check on additional parameters for the silent mode of the Oracle-Installer executing `./runIstaller oui -help`.
+It is one thing to install manually using a GUI, but to automate the installation is quite another cup of tea. You should read the following paragraph.
 
 ## 4a. How can I control the setup process?
 In the `Vagrantfile` there is a line 
@@ -122,7 +130,7 @@ When you want to start the next step, just enter
 	vagrant provision.
 
 ## 6. Which shared folders do exist? 
-In the work directory where you execute `vagrant up`, there are 2 directories `./logs` and `./scripts`. The provisioning scripts log into `./logs`. In the `./develop` you may store your own SQL-scripts. For **details see topic 15**.
+In the work directory where you execute `vagrant up`, there are 2 directories `./logs` and `./develop`. The provisioning scripts log into `./logs`. In the `./develop` you may store your own SQL-scripts. For **details see topic 15**.
 
 
 ## 7. How do I connect to the guest VM ?
@@ -146,7 +154,7 @@ This informs you that we have two Oracle environments and two databases `CDB1` a
  - `cdb1` sets up the Oracle12g environment and 
  - `upgr` sets up the Oracle11g environment. 
  
-Both provide practical aliases as 
+Both provide practical aliases like 
 
 - `s` for `sqlplus / as sysdba` or 
 - `oh` to go to your current `ORACLE_HOME`. 
@@ -162,7 +170,7 @@ Feel free to add your own shortcuts.
 	oracle    3112     1  0 10:04 ?        00:00:00 ora_pmon_UPGR
 	[oracle@localhost ~]$ 
 	 
-The databases and the listeners are started after the setup and at boot-time. It is worth to study thouroughly this sophisticated mechanisms in the `postinstall.sh`.
+The databases and the listener are started after the setup and at boot-time. It is worth to study thouroughly Oracle's old, but nevertheless sophisticated mechanisms in the `postinstall.sh`. They come along with every Oracle Release since many years now.
 
 To see, which listeners are running do
 
@@ -219,7 +227,7 @@ The help shows you the most common commands e.g.
 	
 ## 11. How can I handle TNS problems? 
 I have placed the listener.ora and the tnsnames.ora in $TNS_ADMIN (/var/opt/oracle). 
-Even if the tnsping utility shows a database, it does not mean that you can reach the database via then TNS framework. 
+Even if the **tnsping** utility shows a database, it does not mean that you can reach the database via the TNS framework. 
 
 You should test it eg. by `sqlplus system/vagrant@cdb1`
 
@@ -250,9 +258,9 @@ Experienced DBAs do this
 	// names) are vulnerable to this error if not properly configured or names are
 	// misspelled.
 
-Correct the syntax error and the you can connect via then TNS.
+Correct the syntax error and the you can connect via the TNS.
 
-There are a some common pitfalls in the TNS configuration. Oracle's Online Documentation is very good, often hard to study, but it is worth the effort. Besides, there are meanwhile many very good special sites, blogs etc.
+There are a some common pitfalls in the TNS configuration. Oracle's Online Documentation is  good, often hard to study, but it is worth the effort. Besides, there are meanwhile many very good special sites, blogs etc.
 
 ## 12a. How can I see the options of a database?
 It is crucial to know the options of a database, because it decides what I can do with it. Besides, in production, it is a matter of license fees. Write a little script, e.g. `registry.sql`
@@ -304,10 +312,10 @@ See the difference, if you run it in the `UPGR` database:
 
 Here I decided to limit the options to the minimum, because we need this database only for educational purposes, i.e. for training the different methods of upgrading a database to Oracle12c. Study the scripts [scripts/create11gdb.sh](scripts/create11gdb.sh) and [scripts/create11gdb.sql](scripts/create11gdb.sql) to see the old manual way of creating a database. 
 
-The `CDB1` was created using `dbca` in silent mode. Study the scripts [scripts/create12cdb.sh](scripts/create12cdb.sh). For newcomers all scripts in the subdirectory `./scripts` are a complete workshop on installing.
+The `CDB1` was created using `dbca` in silent mode. Study the script [scripts/create12cdb.sh](scripts/create12cdb.sh). For newcomers all scripts in the subdirectory `./scripts` are a complete workshop on installing.
 
 ## 12b. Components and Options
-I have used the term *options* quite deliberatelly for the *registered components* of a database. Do not mix up  **dba_registry** with the more detailed **v$option** as `Compression`, `Block Change Tracking`, `Automatic Storage Management`, `Spatial`, etc. It bis a bit confusing. In Oracle11.2 there are 65 options, in Oracle12c R1 there are 86.
+I have used the term *options* quite deliberatelly for the *registered components* of a database. Do not mix up  **dba_registry** with the more detailed **v$option** where you find `Compression`, `Block Change Tracking`, `Automatic Storage Management`, `Spatial`, etc. It bis a bit confusing. In Oracle11.2 there are 65 options, in Oracle12c R1 there are 86.
 
 Write a little script, eg. `options.sql`
 
@@ -366,7 +374,7 @@ For new-comers only: there are different ways of shutting down and starting up, 
 ## 14. What has Vagrant to do with VirtualBox?
 See some good books, e.g. [Vagrant Up and Runnin](http://chimera.labs.oreilly.com/books/1234000001668/) by Mitchell Hashimoto, the author of Vagrant. 
 
-## 15. As user oracle I cannot execute scripts stored in the shared folders. 
+## 15. As user oracle I cannot execute scripts stored in the shared folder ./develop 
 As user `vagrant` you have no problem, because the shared folder `/vagrant` is owned by user `vagrant`. If you want full compliance of your scripts eg. in the folder `/vagrant/develop` you could do the following:
 
 In `Vagrantfile` uncomment the line 
@@ -379,7 +387,7 @@ then execute
 
 Before the preinstall there is no user `oracle`. Therefor we cannot leave this line uncommented.
 
-See a not mounted folder.
+Enter the VM and see a not mounted folder.
 
 	[oracle@localhost ~]$ pwd
 	/home/oracle
@@ -403,7 +411,7 @@ The subdirectory /vagrant/develop belongs to the user vagrant. That is your prob
 	-rwx------ 1 oracle oinstall   3651 23. Okt 2014  smonitor.ksh
 	[oracle@localhost develop]$ 
 
-Here is one of my scripts, developed during 15 years working as Oracle DBA. It would surpass this handout to demonstrate this tool. There will be a github - project for the further development of this framework for profi DBA - scripts.
+**smonitor.ksh** is one of my scripts, developed during 15 years working as Oracle DBA. It would surpass this handout to demonstrate this tool. There will be a github - project for the further development of this framework for profi DBA - scripts.
 
 Writing one's own DBA – scripts can be trained in special workshops e.g. on 
 
