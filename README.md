@@ -25,7 +25,7 @@ You should have installed
     - `linux.x64_11gR2_database_2of2.zip`
 - Place the zip archives in ./11g_installer/
 
-**NOTE:** We opted for 11.2.0.1 as this is available with a standard developer license. Unfortunately there is no direct way to upgrade to Oracle12c. But this cannot deter us from learning to upgrade. See [FAQ](https://github.com/wkoertgen/train.oracle12.migration/FAQ.md) 
+**NOTE:** We opted for 11.2.0.1 as this is available with a standard developer license. Unfortunately there is no direct way to upgrade to Oracle12c. But this cannot deter us from learning to upgrade. See [FAQ](https://github.com/wkoertgen/train.oracle12.migration.FAQ.md) 
 
 ### NOTE on Hardware
 
