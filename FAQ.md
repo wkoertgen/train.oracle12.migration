@@ -2,7 +2,7 @@
 
 ## 1. What is the difference between your solution and Oracle's solution  ?
 
-Oracle's solution comes along with Oracle 11.2.0.4, which is not free for standard Developer License. Our solution aims to people who have no money or do not work in companies, able to afford a support identfier. Hence you cannot directly upgrade Oracle 11.2.0.1 to Oracle12c. Nevertheless we ar able to do our studies in upgrading. Additonal workarounds can be found on [wkoertgen.blogspot.de](http://wkoertgen.blogspot.de) 
+Oracle's solution comes along with Oracle 11.2.0.4, which is not free for standard Developer License. Our solution aims to people who have no money or do not work in companies, able to afford a support identfier. Hence you cannot directly upgrade Oracle 11.2.0.1 to Oracle12c. Nevertheless we are able to do our studies in upgrading. Additional workarounds can be found on [wkoertgen.blogspot.de](http://wkoertgen.blogspot.de) 
 
 Nevertheless, Oracle's Upgrade Team did a great job, the Hand-on-Labs is excellent.
 
