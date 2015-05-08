@@ -2,7 +2,7 @@
 
 ## 1. What is the difference between your solution and Oracle's solution  ?
 
-Oracle's solution comes along with Oracle 11.2.0.4, which is not free for standard Developer License. Our solution aims to people who have no money or do not work in companies, able to afford a support identfier. Hence you cannot directly upgrade Oracle 11.2.0.1 to Oracle12c. Nevertheless we ar able to do our studies in upgrading. Additonal workarounds can be found on [wkoertgen.blogspot.de](http://wkoertgen.blogspot.de) 
+Oracle's solution comes along with Oracle 11.2.0.4, which is not free for standard Developer License. Our solution aims to people who have no money or do not work in companies, able to afford a support identfier. Hence you cannot directly upgrade Oracle 11.2.0.1 to Oracle12c. Nevertheless we are able to do our studies in upgrading. Additional workarounds can be found on [wkoertgen.blogspot.de](http://wkoertgen.blogspot.de) 
 
 Nevertheless, Oracle's Upgrade Team did a great job, the Hand-on-Labs is excellent.
 
@@ -40,13 +40,6 @@ You should have / create a free Oracle account to get a **Developer License**. P
 Yes, but you have to create an appropiate response file. As holder of an MOS account you are familiar with creating and modifying response files.
 Eventually you should check on additional parameters for the silent mode of the Oracle-Installer executing `./runIstaller oui -help`.
 It is one thing to install manually using a GUI, but to automate the installation is quite another cup of tea. You should read the following paragraph.
-
-## 3c. What about Oracle 12.1.0.1 ?
-This seems to be available for standard developer license, too. It would have the advantage, that you can train the complete set of upgrade options.
-
-It would prevent you from comparing the optimizers, because the 12c - optimizer represents the **3rd. Optimizer-Generation**.
-
-I recommend to do it yourself. Please see the latest entry in [Oracle's Upgrade Blog](http://blogs.oracle.com/UPGRADE) to learn how to customize the CDB options - by the way, we applied the same technique in [./scripts/create11gdb.sql](https://github.com/wkoertgen/train.oracle12.migration.scripts.create11gdb.sql) 
 
 ## 4a. How can I control the setup process?
 In the `Vagrantfile` there is a line 
