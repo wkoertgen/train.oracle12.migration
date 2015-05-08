@@ -46,7 +46,9 @@ This seems to be available for standard developer license, too. It would have th
 
 It would prevent you from comparing the optimizers, because the 12c - optimizer represents the **3rd. Optimizer-Generation**.
 
-I recommend to do it yourself. Please see the latest entry in [Oracle's Upgrade Blog](http://blogs.oracle.com/UPGRADE) to learn how to customize the CDB options - by the way, we applied the same technique in [./scripts/create11gdb.sql](https://github.com/wkoertgen/train.oracle12.migration.scripts.create11gdb.sql) 
+It would be a good exercise to do it yourself. Please see the latest entry in [Oracle's Upgrade Blog](http://blogs.oracle.com/UPGRADE) to learn how to customize the CDB options - by the way, we applied the same technique in [./scripts/create11gdb.sql](https://github.com/wkoertgen/train.oracle12.migration.scripts.create11gdb.sql)
+
+Probably we will open a new branch to realize this solution.  
 
 ## 4a. How can I control the setup process?
 In the `Vagrantfile` there is a line 
