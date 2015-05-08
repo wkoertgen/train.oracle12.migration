@@ -147,7 +147,7 @@ To connect to the guest VM type
 
 	vagrant ssh
 
-which will log you in as superuser vagrant. You are bound to work as user `oracle`. We have set the password to `vagrant`. Either you do `sudo su - oracle` oder better
+which will log you in as superuser vagrant. To reach the databases, you are bound to work as user `oracle`. If you are working on Windows, you do not work as user oracle, so after entering the guest VM you are bound to type `su - oracle`. We have set the password to `vagrant`. If you are working on a Unix system as user oracle, you may type as well
 
 	vagrant ssh -p
 
