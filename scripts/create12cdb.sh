@@ -29,7 +29,7 @@ sudo -Eu oracle $ORACLE_HOME/bin/dbca -silent \
 -memoryPercentage 40 \
 -listeners LISTENER >> $LOGFILE 2>&1
 if [[ "$?" != "0" ]]; then exit 1; fi
-$ORACLE_HOME/bin sqlplus / as sysdba << EOT
+$ORACLE_HOME/bin/sqlplus / as sysdba << EOT
 alter pluggable database pdb1 open;
 EOT
 
