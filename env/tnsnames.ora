@@ -32,5 +32,15 @@ UPGR =
     )
   )
 
+# optional FTEX 
+FTEX =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = oracle12c)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = FTEX)
+    )
+  )
+
 
 

@@ -22,3 +22,4 @@
 #
 CDB1:/u01/app/oracle/product/12.1.0:Y
 UPGR:/u01/app/oracle/product/11.2.0:Y
+FTEX:/u01/app/oracle/product/12.1.0:N

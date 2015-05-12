@@ -31,3 +31,8 @@ if [[ $? != "0" ]]; then echo "ERROR in create11gdb.sh - aborting setup"; exit; 
 /vagrant/scripts/postinstall.sh
 if [[ $? != "0" ]]; then echo "ERROR in postinstall.sh - aborting setup"; exit; fi
 
+#### optional: create FTEX database for Full Transport Export #####
+#### shutdown UPGR in this use case ####
+#/vagrant/scripts/FTEX.sh
+#if [[ $? != "0" ]]; then echo "ERROR in FTEX.sh - aborting setup"; exit; fi
+

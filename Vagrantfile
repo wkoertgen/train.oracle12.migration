@@ -21,6 +21,7 @@ Vagrant.configure(2) do |config|
   # Oracle port forwarding
   config.vm.network "forwarded_port", guest: 1521, host: 11521
   config.vm.network "forwarded_port", guest: 5500, host: 5510
+  config.vm.network "forwarded_port", guest: 5501, host: 5511
 
   # run setup.sh
   config.vm.provision "shell", path: "scripts/setup.sh"

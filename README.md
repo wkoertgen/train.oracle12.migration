@@ -1,7 +1,7 @@
 # train.oracle12c.migration
 
 An experiment trying to get Oracle12c and Oracle11g up and running using vagrant.
-We want to evaluate the lowest possible entry barrier for getting started with Oracle 12C, e.g. for easy 
+We want to evaluate the lowest possible entry barrier for getting started with Oracle 12c, e.g. for easy 
 and scalable setup of training sessions, webinars, etc. 
 
 ## Prerequisites
@@ -43,6 +43,7 @@ you should be able to connect to the databases using `vagrant ssh` and `su - ora
 - Service `CDB1` for Oracle12c container
 - Service `PDB1` for pluggable database
 - Service `UPGR` for Oracle11g database
+- Optional service `FTEX' for Oracle12 non-cdb database
 
 ## First & Further Steps
 
