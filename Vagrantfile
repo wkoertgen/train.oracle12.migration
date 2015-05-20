@@ -10,7 +10,7 @@ Vagrant.configure(2) do |config|
   #config.vbguest.auto_update = true
 
   # additonal folders
-  config.vm.synced_folder "./develop", "/develop", owner: "oracle", group: "oinstall"
+  #config.vm.synced_folder "./develop", "/develop", owner: "oracle", group: "oinstall"
 
   # change memory size, cpu#
   config.vm.provider "virtualbox" do |v|
