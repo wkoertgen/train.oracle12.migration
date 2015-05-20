@@ -19,8 +19,8 @@ if [[ $? != "0" ]]; then echo "ERROR in oracle12c-install.sh - aborting setup"; 
 if [[ $? != "0" ]]; then echo "ERROR in oracle11g-install.sh - aborting setup"; exit; fi
 
 # create Oracle11g database
-/vagrant/scripts/create11gdb.sh
-if [[ $? != "0" ]]; then echo "ERROR in create11gdb.sh - aborting setup"; exit; fi
+/vagrant/scripts/UPGR.sh
+if [[ $? != "0" ]]; then echo "ERROR in UPGR.sh - aborting setup"; exit; fi
 
 # create Oracle12c Containerdatabase + pluggable database
 /vagrant/scripts/CDB1.sh

@@ -24,8 +24,8 @@ sudo chown oracle:oinstall $ORACLE_HOME/dbs/initUPGR.ora
 sudo chmod 644 $ORACLE_HOME/dbs/initUPGR.ora
 sudo cp /vagrant/env/glogin.sql $ORACLE_HOME/sqlplus/admin/glogin.sql
 
-#sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/create11gdb.sql >> $LOGFILE
-sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/create11gdb.sql > /dev/null 2>&1
+#sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/UPGR.sql >> $LOGFILE
+sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/UPGR.sql > /dev/null 2>&1
 if [[ "$?" != "0" ]]; then exit 1; fi
 
 echo Database UPGR creation finished $(date) | tee -a $LOGFILE
