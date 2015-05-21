@@ -10,8 +10,9 @@ echo "wait for database creation to finish ..."
 ORACLE_BASE=/u01/app/oracle
 ORACLE_HOME=$ORACLE_BASE/product/12.1.0
 ORACLE_SID=CDB1
-PATH=$ORACLE_HOME/bin:$PATH; 
+PATH=$ORACLE_HOME/bin:$ORACLE_HOME/perl/bin:$PATH;
 export ORACLE_BASE ORACLE_HOME ORACLE_SID PATH
+
 
 OLD_UMASK=`umask`
 umask 0027
@@ -19,22 +20,33 @@ sudo -Eu oracle mkdir -p $ORACLE_BASE/admin/CDB1/adump
 sudo -Eu oracle mkdir -p $ORACLE_BASE/admin/CDB1/dpdump
 sudo -Eu oracle mkdir -p $ORACLE_BASE/cfgtoollogs/dbca/CDB1
 sudo -Eu oracle mkdir -p $ORACLE_BASE/oradata/CDB1/pdbseed
+sudo -Eu oracle mkdir -p $ORACLE_BASE/oradata/CDB1/PDB
 sudo -Eu oracle mkdir -p $ORACLE_HOME/dbs
-umask ${OLD_UMASK}
-PERL5LIB=$ORACLE_HOME/rdbms/admin:$PERL5LIB; export PERL5LIB
+
+sudo -Eu oracle $ORACLE_HOME/bin/dbca -silent \
+-createDatabase \
+-templateName General_Purpose.dbc \
+-gdbName CDB1 \
+-sid CDB1 \
+-createAsContainerDatabase true \
+-numberOfPdbs 1 \
+-pdbName PDB1 \
+-pdbadminUsername vagrant \
+-pdbadminPassword vagrant \
+-SysPassword vagrant \
+-SystemPassword vagrant \
+-emConfiguration NONE \
+-datafileDestination /u01/app/oracle/oradata \
+-storageType FS \
+-characterSet AL32UTF8 \
+-memoryPercentage 40 \
+-listeners LISTENER >> $LOGFILE 2>&1
+if [[ "$?" != "0" ]]; then exit 1; fi
 
 sudo cp /vagrant/env/initCDB1.ora $ORACLE_HOME/dbs
 sudo chown oracle:oinstall $ORACLE_HOME/dbs/initCDB1.ora
 sudo chmod 644 $ORACLE_HOME/dbs/initCDB1.ora
 sudo cp /vagrant/env/glogin.sql $ORACLE_HOME/sqlplus/admin/glogin.sql
 
-sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/CDB1.sql >> $LOGFILE
-#sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/CDB1.sql > /dev/null 2>&1
-if [[ "$?" != "0" ]]; then exit 1; fi
-
 echo Database CDB1 creation finished $(date) | tee -a $LOGFILE
-
-
-
-
 

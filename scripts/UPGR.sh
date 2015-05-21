@@ -1,5 +1,5 @@
 RUNTIME=$(date +%y%m%d%H%M)
-LOGFILE=/vagrant/logs/create11gdb_$RUNTIME.log
+LOGFILE=/vagrant/logs/UPGR_$RUNTIME.log
 
 echo Database UPGR creation in progress $(date) | tee $LOGFILE
 echo Logfile is $LOGFILE

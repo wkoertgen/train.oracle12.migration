@@ -12,8 +12,10 @@ export ORACLE_HOME=$ORACLE_BASE/product/12.1.0
 export ORACLE_SID=CDB1
 
 cd /vagrant/12c_installer
-unzip linuxamd64_12102_database_1of2.zip >> $LOGFILE 2>&1
-unzip linuxamd64_12102_database_2of2.zip  >> $LOGFILE 2>&1
+#unzip linuxamd64_12102_database_1of2.zip >> $LOGFILE 2>&1
+unzip linuxamd64_12102_database_1of2.zip > /dev/null 2>&1
+#unzip linuxamd64_12102_database_2of2.zip  >> $LOGFILE 2>&1
+unzip linuxamd64_12102_database_2of2.zip > /dev/null  2>&1
 
 
 

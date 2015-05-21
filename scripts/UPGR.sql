@@ -26,7 +26,7 @@ USER SYS IDENTIFIED BY vagrant USER SYSTEM IDENTIFIED BY vagrant;
 @?/rdbms/dmin/catblock.sql;
 @?/rdbms/admin/catproc.sql;
 @?/rdbms/admin/catoctk.sql;
-@?/rdbms/admin/owminst.plb;
+--@?/rdbms/admin/owminst.plb;
 connect SYSTEM/vagrant
 @?/sqlplus/admin/pupbld.sql;
 connect SYSTEM/vagrant
