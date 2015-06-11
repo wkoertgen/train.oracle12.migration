@@ -95,13 +95,14 @@ which refers to the script below. You can control the process by uncommenting / 
 	
 **Note:** I have commented all lines for demonstration only. The optional database FTEX overcomes the problem, that with Oracle 11.2.0.1 a *direct upgrade* is not supported, hence that you cannot do a **Full Transportable export / import into a pluggable database**. See tutorials on [wkoertgen.blogspot.de](http://wkoertgen.blogspot.de) 
 
-- ** I do not see the logfiles completely. Why is that so ? **
-Some people have complained, that logfiles grow up to 20 MB. Hence we directed the logging of the **create11gdb.sql** to /dev/null. 
-If you would like the follow the output for educational purposes, you may  change 2 lines in **create11gdb.sh**
+** I do not see the logfiles completely. Why is that so ? **
 
-`#sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/create11gdb.sql >> $LOGFILE`
+Some people have complained, that logfiles grow up to 20 MB. Hence we directed the logging of the **UPGR.sql** to /dev/null. 
+If you would like the follow the output for educational purposes, you may  change 2 lines in **UPGR.sh**
 
-`sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/create11gdb.sql > /dev/null 2>&1`
+`#sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/UPGR.sql >> $LOGFILE`
+
+`sudo -Eu oracle $ORACLE_HOME/bin/sqlplus /nolog @/vagrant/scripts/UPGR.sql > /dev/null 2>&1`
 
 The other logfile from **oracle11g-install** is directed  to `/u01/app/oraInventory/logs` inside the guest VM by the **runInstaller** of Oracle11g itself. This installer has no feature like `show_progress` as we have it in Oracle12c. You mail follow the process by `tail -f <logfile>`.
 
@@ -325,9 +326,9 @@ See the difference, if you run it in the `UPGR` database:
 	Oracle Database Packages and Types	  VALID      11.2.0.1.0  26-APR-2015 08:08:39
 
 
-Here I decided to limit the options to the minimum, because we need this database only for educational purposes, i.e. for training the different methods of upgrading a database to Oracle12c. Study the scripts [scripts/create11gdb.sh](scripts/create11gdb.sh) and [scripts/create11gdb.sql](scripts/create11gdb.sql) to see the old manual way of creating a database. 
+Here I decided to limit the options to the minimum, because we need this database only for educational purposes, i.e. for training the different methods of upgrading a database to Oracle12c. Study the scripts [scripts/UPGR.sh](scripts/UPGR.sh) and [scripts/UPGR.sql](scripts/UPGR.sql) to see the old manual way of creating a database. 
 
-The `CDB1` was created using `dbca` in silent mode. Study the script [scripts/create12cdb.sh](scripts/create12cdb.sh). For newcomers all scripts in the subdirectory `./scripts` are a complete workshop on installing.
+The `CDB1` was created using `dbca` in silent mode. Study the script [scripts/CDB1.sh](scripts/CDB1.sh). For newcomers all scripts in the subdirectory `./scripts` are a complete workshop on installing.
 
 - ** Components and Options **
 I have used the term *options* quite deliberatelly for the *registered components* of a database. Do not mix up  **dba_registry** with the more detailed **v$option** where you find `Compression`, `Block Change Tracking`, `Automatic Storage Management`, `Spatial`, etc. It bis a bit confusing. In Oracle11.2 there are 65 options, in Oracle12c R1 there are 86.
