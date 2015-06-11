@@ -17,6 +17,7 @@ sudo chmod 0644 /etc/oratab  >> $LOGFILE 2>&1
 echo Installing in /usr/local/bin >> $LOGFILE
 sudo cp /vagrant/env/upgr /usr/local/bin >> $LOGFILE 2>&1
 sudo cp /vagrant/env/cdb1 /usr/local/bin >> $LOGFILE 2>&1
+sudo cp /vagrant/env/ftex /usr/local/bin >> $LOGFILE 2>&1
 
 # bash_profile
 echo Installing bash_profile >> $LOGFILE 2>&1

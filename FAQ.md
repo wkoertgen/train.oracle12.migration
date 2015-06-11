@@ -55,47 +55,47 @@ In the `Vagrantfile` there is a line
 	config.vm.provision "shell", path: "scripts/setup.sh"
 
 which refers to the script below. You can control the process by uncommenting / commenting the lines of your choice.
-	
-	# setup.sh controls the process of 
-	# preinstall 
-	# install Oracle SW 
-	# creating databases 
-	# postinstall 
-	# the scripts log into /vagrant/logs/ 
-	
-	# preinstall 
-	#/vagrant/scripts/preinstall.sh 
-	#if [[ "$?" != "0" ]]; then echo "ERROR in preinstall.sh - aborting setup.; exit; fi 
-	
-	# Oraclel2 install 
-	#/vagrant/scripts/oraclel2c-install.sh 
-	#if [[ "$?" != "0" ]]; then echo "ERROR in oraclel2c-install.sh - aborting setup.; exit; fi 
-	
-	# create Oraclel2c Containerdatabase + pluggable database 
-	#/vagrant/scripts/createl2cdb. sh 
-	#if [[ "$?" != "0" ]]; then echo "ERRORincreatel2cdb.sh - aborting setup.; exit; fi 
-	
-	# Oraclellg install 
-	#/vagrant/scripts/oraclellg-install.sh 
-	#if [[ "$0" != "0" ]]; then echo "ERROR in oraclellg-install.sh - aborting setup.; exit; fi 
-	
-	# create Oraclellg database 
-	#/vagrant/scripts/createllgdb. sh 
-	#if [[ "$?" != "0" ]]; then echo "ERROR in createllgdb.sh - aborting setup.; exit; fi 
-	
-	# postinstall 
-	#/vagrant/scripts/postinstall.sh 
-	#if [[ "$?" != "0" ]]; then echo "ERROR in postinstall.sh - aborting setup.; exit; fi 
 
-	#### optional: create FTEX database for Full Transport Export   #####
+	# setup.sh controls the process of
+	# preinstall
+	# install Oracle SW
+	# creating databases
+	# postinstall
+	# the scripts log into /vagrant/logs/
+	
+	# preinstall
+	#/vagrant/scripts/preinstall.sh
+	#if [[ $? != "0" ]]; then echo "ERROR in preinstall.sh - aborting setup"; exit; fi
+	
+	# Oracle12 install
+	#/vagrant/scripts/oracle12c-install.sh
+	#if [[ "$? != "0" ]]; then echo "ERROR in oracle12c-install.sh - aborting setup"; exit; fi
+	
+	# Oracle11g install
+	#/vagrant/scripts/oracle11g-install.sh
+	#if [[ $? != "0" ]]; then echo "ERROR in oracle11g-install.sh - aborting setup"; exit; fi
+	
+	# create Oracle11g database
+	#/vagrant/scripts/UPGR.sh
+	#if [[ $? != "0" ]]; then echo "ERROR in UPGR.sh - aborting setup"; exit; fi
+	
+	# create Oracle12c Containerdatabase + pluggable database
+	#/vagrant/scripts/CDB1.sh
+	#if [[ $? != "0" ]]; then echo "ERROR in CDB1.sh - aborting setup"; exit; fi
+	
+	
+	# postinstall
+	#/vagrant/scripts/postinstall.sh
+	#if [[ $? != "0" ]]; then echo "ERROR in postinstall.sh - aborting setup"; exit; fi
+	
+	#### optional: create FTEX database for Full Transport Export #####
 	#### shutdown UPGR in this use case ####
 	#/vagrant/scripts/FTEX.sh
 	#if [[ $? != "0" ]]; then echo "ERROR in FTEX.sh - aborting setup"; exit; fi
-
-
+	
 **Note:** I have commented all lines for demonstration only. The optional database FTEX overcomes the problem, that with Oracle 11.2.0.1 a *direct upgrade* is not supported, hence that you cannot do a **Full Transportable export / import into a pluggable database**. See tutorials on [wkoertgen.blogspot.de](http://wkoertgen.blogspot.de) 
 
-- ### I do not see the logfiles completely. Why is that so ? 
+- ** I do not see the logfiles completely. Why is that so ? **
 Some people have complained, that logfiles grow up to 20 MB. Hence we directed the logging of the **create11gdb.sql** to /dev/null. 
 If you would like the follow the output for educational purposes, you may  change 2 lines in **create11gdb.sh**
 
@@ -329,7 +329,7 @@ Here I decided to limit the options to the minimum, because we need this databas
 
 The `CDB1` was created using `dbca` in silent mode. Study the script [scripts/create12cdb.sh](scripts/create12cdb.sh). For newcomers all scripts in the subdirectory `./scripts` are a complete workshop on installing.
 
-- ### Components and Options
+- ** Components and Options **
 I have used the term *options* quite deliberatelly for the *registered components* of a database. Do not mix up  **dba_registry** with the more detailed **v$option** where you find `Compression`, `Block Change Tracking`, `Automatic Storage Management`, `Spatial`, etc. It bis a bit confusing. In Oracle11.2 there are 65 options, in Oracle12c R1 there are 86.
 
 Write a little script, eg. `options.sql`
